@@ -64,7 +64,7 @@ Unlike traditional, basic library management systems that rely on naive FIFO que
 ## 🧠 Core Algorithms & Data Structures (DSA) Engine
 
 ### 1. Weighted Fair Reservation Queue Engine (`PriorityQueue` & Dynamic Aging Decay)
-* **Class**: [`WeightedFairQueueEngine.java`](file:///e:/LIBRARIX/backend/src/main/java/com/librarix/algorithm/WeightedFairQueueEngine.java)
+* **Class**: [`PriorityQueueEngine.java`](file:///e:/LIBRARIX/backend/src/main/java/com/librarix/algorithm/PriorityQueueEngine.java)
 * **Data Structure**: `PriorityQueue` / Min-Max Heap (`reservation_queues` in MongoDB)
 * **Mathematical Formula**:
   ```text
@@ -85,24 +85,23 @@ Unlike traditional, basic library management systems that rely on naive FIFO que
   PopularityScore = (TotalLoans × 2.0) + (AvailableQuantity × 0.5)
   ```
 * **Algorithm & DSA Logic**:
-  * Ranks all catalog books by borrowing popularity demand.
+  * Ranks all catalog books by borrowing popularity demand calculated from live loan repository data.
   * Places top 30% highest demand books at **Eye-Level height ($y = 1.5\text{m}$)** for optimal physical picking ergonomics.
   * Groups co-borrowed book titles into affinity clusters along adjacent $X$-axis shelf positions.
 
 ---
 
-### 3. RAG Semantic Vector Search & Re-ranking ($L_2$ Vector Space)
-* **Classes**: [`SemanticSearchService.java`](file:///e:/LIBRARIX/backend/src/main/java/com/librarix/ai/SemanticSearchService.java) & [`HuggingFaceL2Tokenizer.java`](file:///e:/LIBRARIX/backend/src/main/java/com/librarix/ai/HuggingFaceL2Tokenizer.java)
-* **Data Structure**: Dense $L_2$-Normalized Vector Space ($V \in \mathbb{R}^d$) & N-Gram Word Frequency Index
+### 3. Semantic Vector Search Engine ($L_2$ Euclidean Vector Space) & RAG AI Assistant
+* **Classes**: [`SemanticSearchService.java`](file:///e:/LIBRARIX/backend/src/main/java/com/librarix/ai/SemanticSearchService.java), [`HuggingFaceL2Tokenizer.java`](file:///e:/LIBRARIX/backend/src/main/java/com/librarix/ai/HuggingFaceL2Tokenizer.java) & [`LibrarianAssistantService.java`](file:///e:/LIBRARIX/backend/src/main/java/com/librarix/ai/LibrarianAssistantService.java)
+* **Data Structure**: Dense $L_2$-Normalized Unit Vector Space ($V \in \mathbb{R}^d$) & Term Frequency Map
 * **Mathematical Formula**:
   ```text
   L2Distance = sqrt( sum( (Vector_Q[i] - Vector_D[i])^2 ) )
   SimilarityScore = 1.0 / (1.0 + L2Distance)
   ```
 * **Algorithm & DSA Logic**:
-  * Converts query text into $L_2$-normalized vector space representations.
-  * Calculates Euclidean distance similarity scores against book titles, descriptions, authors, and tags.
-  * Filters results with similarity scores $> 0.45$ and returns them ranked by conceptual relevance (e.g. matching *"distributed consensus"* to *"Designing Data-Intensive Applications"*).
+  * **Semantic Vector Retrieval**: Converts query string into $L_2$-normalized unit vectors and scores document text using Euclidean distance similarity. Filters results with score $> 0.45$.
+  * **RAG Pipeline (`LibrarianAssistantService`)**: Feeds top-$K$ retrieved vector documents as grounded context into `LlmProvider` (Groq LLaMA-3 / Google Gemini REST API) to generate natural language librarian responses.
 
 ---
 
@@ -110,8 +109,8 @@ Unlike traditional, basic library management systems that rely on naive FIFO que
 * **Classes**: [`LruKCacheService.java`](file:///e:/LIBRARIX/backend/src/main/java/com/librarix/cache/LruKCacheService.java) & [`CoBorrowGraphService.java`](file:///e:/LIBRARIX/backend/src/main/java/com/librarix/graph/CoBorrowGraphService.java)
 * **Data Structure**: Doubly Linked List + HashMap (`LRU-K`) & Graph Adjacency List ($G = (V, E)$)
 * **Algorithm & DSA Logic**:
-  * **LRU-K Eviction**: Tracks timestamp of $K$-th backward access to prevent cache pollution from one-off book searches.
-  * **Co-Borrow Graph**: Maintains undirected weighted edges between book titles frequently checked out together.
+  * **LRU-K Eviction**: Active in `ResourceService.java` (`getResourceById`, `updateResource`, `deleteResource`). Tracks timestamp of $K$-th backward access to prevent cache pollution from one-off book searches.
+  * **Co-Borrow Graph**: Active in `ShelfController.java` (`get3DShelfLayout`, `reoptimizeShelfLayout`). Computes affinity clusters from co-borrowing loan history to position co-borrowed books side by side on shelves.
 
 ---
 
@@ -119,8 +118,8 @@ Unlike traditional, basic library management systems that rely on naive FIFO que
 * **Class**: [`FineCalculationService.java`](file:///e:/LIBRARIX/backend/src/main/java/com/librarix/service/FineCalculationService.java)
 * **Data Structure**: Time-Delta Window & Policy Rule Evaluation Map
 * **Algorithm & DSA Logic**:
-  * Computes daily overdue penalties: `$0.50/day` for standard books vs `$1.00/day` for rare reference volumes.
-  * Evaluates 24-hour grace periods, fine caps ($50), and automatic capstone project exemptions before recording fines.
+  * Computes daily overdue penalties: `$2.00/day` for standard books.
+  * Evaluates 24-hour grace periods, fine caps ($50), and administrative waiver request workflows before recording fines.
 
 ---
 
@@ -132,7 +131,7 @@ Traditional university library management systems treat all book reservation req
 3. **Delayed Notifications**: Students miss available book pickup windows because notification emails arrive hours late.
 4. **Rigid Penalties**: Fixed flat penalties penalize students without accounting for grace periods or project deadline waivers.
 
-**LIBRARIX** solves this by uniting real-time algorithmic priority waitlists, semantic vector search, interactive 3D shelf visualization, automated dynamic fines, and instantaneous WebSocket push alerts into a Neobrutalist web platform.
+**LIBRARIX** solves this by uniting real-time algorithmic priority waitlists, semantic vector search, RAG LLM assistance, LRU-K caching, co-borrow graph clustering, interactive 3D shelf visualization, automated dynamic fines, and instantaneous WebSocket push alerts into a Neobrutalist web platform.
 
 ---
 
@@ -142,9 +141,10 @@ Traditional university library management systems treat all book reservation req
 |---|---|---|
 | **Waitlist Queue Engine** | **Weighted Fair Reservation Queueing Engine** with continuous wait-time aging decay, urgency score boosts (+10, +25, +50), and user tier multipliers (Regular $1.0\times$, Capstone $1.5\times$, Faculty $2.0\times$) | Naive First-In-First-Out (FIFO) queue with zero priority awareness |
 | **Spatial Inventory Layout** | **3D Spatial Shelf Slotting Optimizer** placing top 30% high-demand books at Eye-Level height ($y = 1.5\text{m}$) with category clustering | Static 2D text lists with random shelf placement |
-| **Search Intelligence** | **RAG Vector Search Engine** using HuggingFace L2 Euclidean distance tokenizer for semantic intent matching | Strict literal SQL substring matching (`LIKE %term%`) |
+| **Search & AI Intelligence** | **Semantic Vector Search & RAG AI Assistant** using $L_2$ Euclidean vector distance + Groq/Gemini LLM context grounding | Strict literal SQL substring matching (`LIKE %term%`) |
+| **Caching & Graph Engine** | **LRU-K Cache & Co-Borrow Graph Engine** for $O(1)$ fast catalog retrieval and co-borrow affinity shelf clustering | No application-level caching or graph clustering |
 | **Real-Time Push Alerts** | **STOMP WebSocket Engine** pushing instant toast notifications on book check-in to specific user topics (`/topic/user/{userId}`) | Delayed batch email notifications |
-| **Overdue Fine Governance** | **Rule-Based Fine & Waiver Engine** with daily book rates ($0.50/day), 24h grace period, $50 caps, and Capstone exemption waivers | Fixed flat penalties with zero waiver workflows |
+| **Overdue Fine Governance** | **Rule-Based Fine & Waiver Engine** with daily book rates ($2.00/day), 24h grace period, $50 caps, and administrative waiver workflows | Fixed flat penalties with zero waiver workflows |
 | **Interactive 3D Layer** | **Three.js & React Three Fiber (R3F)** interactive 3D shelf hall corridor with non-overlapping raycasting | Plain static HTML table grids |
 | **Unauthenticated Browsing** | **Public Guest Access Mode** with inline checkout warnings and direct registration flows | Strict sign-in wall blocking public inventory visibility |
 | **Dataset Scale** | **60 Pre-seeded Technical Book Items** auto-initialized in MongoDB on server startup | Empty placeholder database schemas |
@@ -168,14 +168,18 @@ graph TD
         CTRL_RES["Resource Controller"]
         CTRL_LOAN["Loan Controller"]
         CTRL_QUEUE["Queue Controller"]
-        CTRL_AI["AI Semantic Search Controller"]
+        CTRL_AI["AI Semantic & RAG Controller"]
         CTRL_FINE["Fine Controller"]
+        CTRL_SHELF["Shelf & Graph Controller"]
     end
 
     subgraph Core ["Algorithmic Engine & Business Logic Layer"]
         WFQ["Weighted Fair Queue Engine (Aging Decay + Tier Multipliers)"]
         SLOT["3D Spatial Shelf Slotting Optimizer"]
-        RAG["RAG Vector Search (HuggingFace L2 Tokenizer)"]
+        VEC["Semantic Vector Search (L2 Euclidean Distance Tokenizer)"]
+        RAG["RAG LLM Assistant (Groq / Gemini LLaMA-3 Grounding)"]
+        LRU["LRU-K Cache Eviction Service"]
+        GRAPH["Co-Borrow Graph Engine"]
         WAIVER["Rule-Based Fine & Waiver Engine"]
         STOMP_BROKER["SimpleBroker WebSocket Message Handler"]
     end
@@ -189,7 +193,7 @@ graph TD
     end
 
     UI -->|HTTPS / REST| AUTH
-    R3F -->|Layout Coordinates| CTRL_RES
+    R3F -->|Layout Coordinates| CTRL_SHELF
     WS_CLIENT <-->|WebSocket STOMP /ws| STOMP_BROKER
 
     AUTH --> CTRL_RES
@@ -197,9 +201,13 @@ graph TD
     AUTH --> CTRL_QUEUE
     AUTH --> CTRL_AI
     AUTH --> CTRL_FINE
+    AUTH --> CTRL_SHELF
 
     CTRL_QUEUE --> WFQ
-    CTRL_RES --> SLOT
+    CTRL_SHELF --> SLOT
+    CTRL_SHELF --> GRAPH
+    CTRL_RES --> LRU
+    CTRL_AI --> VEC
     CTRL_AI --> RAG
     CTRL_FINE --> WAIVER
 
@@ -208,7 +216,8 @@ graph TD
 
     WFQ --> DB_QUEUE
     SLOT --> DB_RES
-    RAG --> DB_RES
+    VEC --> DB_RES
+    GRAPH --> DB_LOANS
     WAIVER --> DB_FINES
     CTRL_RES --> DB_RES
     CTRL_LOAN --> DB_LOANS
