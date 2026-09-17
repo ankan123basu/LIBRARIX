@@ -276,20 +276,20 @@ export default function AlgorithmInspectorModal({ isOpen, onClose }: Props) {
                 </h4>
                 <div className="space-y-2">
                   <div className="flex justify-between border-b-2 border-ink pb-1 font-bold">
-                    <span>ASSET TYPE</span>
+                    <span>BOOK CATEGORY</span>
                     <span>DAILY OVERDUE RATE</span>
                   </div>
                   <div className="flex justify-between">
-                    <span>Books & Study Textbooks</span>
+                    <span>Standard Academic Textbooks</span>
                     <span className="font-bold text-stamp">$0.50 / Day</span>
                   </div>
                   <div className="flex justify-between">
-                    <span>Hardware Kits & Lab Oscilloscopes</span>
-                    <span className="font-bold text-stamp">$2.00 / Day</span>
+                    <span>CS & Technical Monographs</span>
+                    <span className="font-bold text-stamp">$1.00 / Day</span>
                   </div>
                   <div className="flex justify-between">
-                    <span>Seminar Study Rooms</span>
-                    <span className="font-bold text-stamp">$5.00 / Day</span>
+                    <span>Rare Reference Volumes</span>
+                    <span className="font-bold text-stamp">$2.00 / Day</span>
                   </div>
                 </div>
               </div>

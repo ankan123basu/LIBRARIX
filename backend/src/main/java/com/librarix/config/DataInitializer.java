@@ -22,7 +22,7 @@ public class DataInitializer implements CommandLineRunner {
 
     @Override
     public void run(String... args) {
-        log.info("Checking LIBRARIX MongoDB dataset seeding status (60 items)...");
+        log.info("Checking LIBRARIX MongoDB book catalog seeding status...");
 
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
@@ -60,26 +60,26 @@ public class DataInitializer implements CommandLineRunner {
                     .userTier(UserTier.REGULAR)
                     .build());
 
-            log.info("Seeded 4 default users in MongoDB: Admin, Librarian, Alice, Bob.");
+            log.info("Seeded default users in MongoDB: Admin, Librarian, Alice, Bob.");
         }
 
-        // 2. Seed 60 Campus Technical Dataset Items into MongoDB
-        seedResourceIfMissing("res-101", "005.133 LIB", "Designing Data-Intensive Applications", "Martin Kleppmann",
+        // 2. Seed 80 Academic & Technical Books with OpenLibrary Book Covers
+        seedResourceIfMissing("res-101", "005.133 DDIA", "Designing Data-Intensive Applications", "Martin Kleppmann",
                 "The definitive guide to distributed systems, storage engines, consensus protocols, and stream processing architectures.",
                 "https://covers.openlibrary.org/b/isbn/9781449373320-L.jpg", ResourceType.BOOK, 5, 3, "SHELF-A1",
-                List.of("programming", "distributed-systems", "architecture"), ResourceStatus.AVAILABLE);
+                List.of("distributed-systems", "architecture", "databases", "computer-science"), ResourceStatus.AVAILABLE);
 
-        seedResourceIfMissing("res-102", "005.741 MON", "MongoDB: The Definitive Guide (3rd Ed)", "Shannon Bradshaw & Eoin Brazil",
+        seedResourceIfMissing("res-102", "005.741 MONGO", "MongoDB: The Definitive Guide (3rd Ed)", "Shannon Bradshaw & Eoin Brazil",
                 "Comprehensive guide to document data modeling, aggregation pipelines, replica sets, and sharded cluster management.",
                 "https://covers.openlibrary.org/b/isbn/9781491954249-L.jpg", ResourceType.BOOK, 4, 0, "SHELF-A2",
-                List.of("database", "nosql", "mongodb"), ResourceStatus.BORROWED);
+                List.of("database", "nosql", "mongodb", "software-engineering"), ResourceStatus.BORROWED);
 
-        seedResourceIfMissing("res-103", "005.276 SPR", "Spring Boot 3 in Action", "Craig Walls",
+        seedResourceIfMissing("res-103", "005.276 SPRING", "Spring Boot 3 in Action", "Craig Walls",
                 "Building microservices, Spring Security JWT authentication, WebFlux reactive streams, and REST API controllers.",
                 "https://covers.openlibrary.org/b/isbn/9781617292545-L.jpg", ResourceType.BOOK, 3, 1, "SHELF-A3",
-                List.of("java", "spring-boot", "backend"), ResourceStatus.AVAILABLE);
+                List.of("java", "spring-boot", "backend", "web-development"), ResourceStatus.AVAILABLE);
 
-        seedResourceIfMissing("res-104", "005.430 OS1", "Operating System Concepts (10th Ed)", "Abraham Silberschatz & Peter B. Galvin",
+        seedResourceIfMissing("res-104", "005.430 OS10", "Operating System Concepts (10th Ed)", "Abraham Silberschatz & Peter B. Galvin",
                 "Process synchronization, virtual memory management, file systems, I/O subsystems, and kernel architecture.",
                 "https://covers.openlibrary.org/b/isbn/9781118063330-L.jpg", ResourceType.BOOK, 5, 3, "SHELF-A4",
                 List.of("operating-systems", "kernel", "cs-core"), ResourceStatus.AVAILABLE);
@@ -104,7 +104,7 @@ public class DataInitializer implements CommandLineRunner {
                 "https://images-na.ssl-images-amazon.com/images/I/71u9i8S2GGL.jpg", ResourceType.BOOK, 4, 1, "SHELF-B2",
                 List.of("system-design", "interview", "scalability"), ResourceStatus.AVAILABLE);
 
-        seedResourceIfMissing("res-109", "005.100 ALG", "Introduction to Algorithms (CLRS 4th Edition)", "Thomas H. Cormen, Charles E. Leiserson",
+        seedResourceIfMissing("res-109", "005.100 CLRS", "Introduction to Algorithms (CLRS 4th Edition)", "Thomas H. Cormen, Charles E. Leiserson",
                 "The standard algorithm textbook covering dynamic programming, graph algorithms, NP-completeness, and B-trees.",
                 "https://covers.openlibrary.org/b/isbn/9780262046305-L.jpg", ResourceType.BOOK, 8, 5, "SHELF-B3",
                 List.of("algorithms", "data-structures", "cs-theory"), ResourceStatus.AVAILABLE);
@@ -114,12 +114,12 @@ public class DataInitializer implements CommandLineRunner {
                 "https://covers.openlibrary.org/b/isbn/9780133594140-L.jpg", ResourceType.BOOK, 5, 2, "SHELF-C1",
                 List.of("networking", "protocols", "tcp-ip"), ResourceStatus.AVAILABLE);
 
-        seedResourceIfMissing("res-111", "006.300 ART", "Artificial Intelligence: A Modern Approach (4th Ed)", "Stuart Russell & Peter Norvig",
+        seedResourceIfMissing("res-111", "006.300 AIMA", "Artificial Intelligence: A Modern Approach (4th Ed)", "Stuart Russell & Peter Norvig",
                 "The leading textbook in AI covering probabilistic reasoning, search algorithms, reinforcement learning, and NLP.",
                 "https://covers.openlibrary.org/b/isbn/9780134610993-L.jpg", ResourceType.BOOK, 6, 0, "SHELF-C2",
                 List.of("ai", "machine-learning", "python"), ResourceStatus.BORROWED);
 
-        seedResourceIfMissing("res-112", "006.310 DEE", "Deep Learning (Adaptive Computation & ML Series)", "Ian Goodfellow, Yoshua Bengio, Aaron Courville",
+        seedResourceIfMissing("res-112", "006.310 DEEP", "Deep Learning (Adaptive Computation & ML Series)", "Ian Goodfellow, Yoshua Bengio, Aaron Courville",
                 "Mathematical foundation of deep neural networks, backpropagation, CNNs, Transformers, and Generative Adversarial Networks.",
                 "https://covers.openlibrary.org/b/isbn/9780262035613-L.jpg", ResourceType.BOOK, 4, 2, "SHELF-C3",
                 List.of("deep-learning", "neural-networks", "pytorch"), ResourceStatus.AVAILABLE);
@@ -134,12 +134,12 @@ public class DataInitializer implements CommandLineRunner {
                 "https://covers.openlibrary.org/b/isbn/9780321751041-L.jpg", ResourceType.BOOK, 5, 4, "SHELF-C5",
                 List.of("algorithms", "knuth", "cs-classic"), ResourceStatus.AVAILABLE);
 
-        seedResourceIfMissing("res-115", "005.453 DRG", "Compilers: Principles, Techniques & Tools (Dragon Book)", "Aho, Lam, Sethi & Ullman",
+        seedResourceIfMissing("res-115", "005.453 DRAGON", "Compilers: Principles, Techniques & Tools (Dragon Book)", "Aho, Lam, Sethi & Ullman",
                 "Lexical analysis, LL/LR parsing, syntax-directed translation, intermediate code generation, and instruction-level optimization.",
                 "https://covers.openlibrary.org/b/isbn/9780321486813-L.jpg", ResourceType.BOOK, 5, 3, "SHELF-C6",
                 List.of("compilers", "parsing", "programming-languages"), ResourceStatus.AVAILABLE);
 
-        seedResourceIfMissing("res-116", "004.360 DIS", "Distributed Systems: Principles and Paradigms", "Andrew S. Tanenbaum & Maarten Van Steen",
+        seedResourceIfMissing("res-116", "004.360 DIST", "Distributed Systems: Principles and Paradigms", "Andrew S. Tanenbaum & Maarten Van Steen",
                 "Architectures, processes, communication, naming, synchronization, consistency models, fault tolerance, and security in distributed systems.",
                 "https://covers.openlibrary.org/b/isbn/9781543057386-L.jpg", ResourceType.BOOK, 6, 4, "SHELF-D1",
                 List.of("distributed-systems", "fault-tolerance", "consensus"), ResourceStatus.AVAILABLE);
@@ -164,207 +164,207 @@ public class DataInitializer implements CommandLineRunner {
                 "https://covers.openlibrary.org/b/isbn/9781593272838-L.jpg", ResourceType.BOOK, 4, 2, "SHELF-D5",
                 List.of("haskell", "functional-programming", "types"), ResourceStatus.AVAILABLE);
 
-        seedResourceIfMissing("res-121", "005.430 OS2", "Operating System Concepts (10th Edition)", "Abraham Silberschatz, Peter B. Galvin",
-                "Process synchronization, virtual memory management, file systems, I/O subsystems, virtual machines, and security protection.",
-                "https://covers.openlibrary.org/b/isbn/9781118063330-L.jpg", ResourceType.BOOK, 8, 4, "SHELF-E1",
-                List.of("operating-systems", "kernel", "memory"), ResourceStatus.AVAILABLE);
-
-        seedResourceIfMissing("res-122", "005.453 CMP2", "Compilers: Principles, Techniques, and Tools", "Alfred V. Aho, Monica S. Lam",
-                "Lexical analysis, syntax-directed translation, intermediate code generation, run-time environments, and code optimization.",
-                "https://covers.openlibrary.org/b/isbn/9780321486813-L.jpg", ResourceType.BOOK, 5, 3, "SHELF-E2",
-                List.of("compilers", "parsing", "optimization"), ResourceStatus.AVAILABLE);
-
-        seedResourceIfMissing("res-123", "005.740 SQL", "High Performance MySQL (4th Edition)", "Silvia Botros & Jeremy Tinley",
+        seedResourceIfMissing("res-121", "005.740 SQL2", "High Performance MySQL (4th Edition)", "Silvia Botros & Jeremy Tinley",
                 "Optimization, backups, replication, scaling, indexing, InnoDB engine internals, and query execution profiling.",
-                "https://covers.openlibrary.org/b/isbn/9781492080519-L.jpg", ResourceType.BOOK, 4, 2, "SHELF-E3",
+                "https://covers.openlibrary.org/b/isbn/9781492080519-L.jpg", ResourceType.BOOK, 4, 2, "SHELF-E1",
                 List.of("database", "mysql", "sql-tuning"), ResourceStatus.AVAILABLE);
 
-        seedResourceIfMissing("res-124", "006.310 PRML", "Pattern Recognition and Machine Learning", "Christopher M. Bishop",
+        seedResourceIfMissing("res-122", "006.310 PRML", "Pattern Recognition and Machine Learning", "Christopher M. Bishop",
                 "Comprehensive introduction to Bayesian methods, linear classification, neural networks, kernel methods, and graphical models.",
-                "https://covers.openlibrary.org/b/isbn/9780387310732-L.jpg", ResourceType.BOOK, 6, 3, "SHELF-E4",
+                "https://covers.openlibrary.org/b/isbn/9780387310732-L.jpg", ResourceType.BOOK, 6, 3, "SHELF-E2",
                 List.of("machine-learning", "statistics", "bayesian"), ResourceStatus.AVAILABLE);
 
-        seedResourceIfMissing("res-125", "005.133 CPP", "The C++ Programming Language (4th Edition)", "Bjarne Stroustrup",
+        seedResourceIfMissing("res-123", "005.133 CPP", "The C++ Programming Language (4th Edition)", "Bjarne Stroustrup",
                 "Definitive resource on C++11 core language features, standard library containers, move semantics, and generic programming.",
-                "https://covers.openlibrary.org/b/isbn/9780321563842-L.jpg", ResourceType.BOOK, 7, 5, "SHELF-F1",
+                "https://covers.openlibrary.org/b/isbn/9780321563842-L.jpg", ResourceType.BOOK, 7, 5, "SHELF-E3",
                 List.of("cpp", "programming", "stl"), ResourceStatus.AVAILABLE);
 
-        seedResourceIfMissing("res-126", "005.133 RUST", "The Rust Programming Language", "Steve Klabnik & Carol Nichols",
+        seedResourceIfMissing("res-124", "005.133 RUST", "The Rust Programming Language", "Steve Klabnik & Carol Nichols",
                 "Memory safety without garbage collection: ownership, borrowing, lifetimes, cargo package manager, and concurrency.",
-                "https://covers.openlibrary.org/b/isbn/9781593278281-L.jpg", ResourceType.BOOK, 5, 3, "SHELF-F2",
+                "https://covers.openlibrary.org/b/isbn/9781593278281-L.jpg", ResourceType.BOOK, 5, 3, "SHELF-E4",
                 List.of("rust", "systems-programming", "memory-safety"), ResourceStatus.AVAILABLE);
 
-        seedResourceIfMissing("res-127", "005.754 RED", "Redis in Action", "Josiah L. Carlson",
+        seedResourceIfMissing("res-125", "005.754 REDIS", "Redis in Action", "Josiah L. Carlson",
                 "In-memory data structure store: key-value caching, Pub/Sub messaging, geospatial indexes, Lua scripting, and Sentinel cluster HA.",
-                "https://covers.openlibrary.org/b/isbn/9781617290855-L.jpg", ResourceType.BOOK, 4, 2, "SHELF-F3",
+                "https://covers.openlibrary.org/b/isbn/9781617290855-L.jpg", ResourceType.BOOK, 4, 2, "SHELF-E5",
                 List.of("redis", "caching", "nosql"), ResourceStatus.AVAILABLE);
 
-        seedResourceIfMissing("res-128", "004.620 KAF", "Kafka: The Definitive Guide (2nd Edition)", "Gwen Shapira, Todd Palino",
+        seedResourceIfMissing("res-126", "004.620 KAFKA", "Kafka: The Definitive Guide (2nd Edition)", "Gwen Shapira, Todd Palino",
                 "Distributed event streaming platform: partition architecture, consumer groups, Kafka Connect, Schema Registry, and Exactly-Once Semantics.",
-                "https://covers.openlibrary.org/b/isbn/9781492043089-L.jpg", ResourceType.BOOK, 6, 3, "SHELF-G1",
+                "https://covers.openlibrary.org/b/isbn/9781492043089-L.jpg", ResourceType.BOOK, 6, 3, "SHELF-F1",
                 List.of("kafka", "event-streaming", "distributed-systems"), ResourceStatus.AVAILABLE);
 
-        seedResourceIfMissing("res-129", "005.800 SEC", "The Web Application Hacker's Handbook (2nd Ed)", "Dafydd Stuttard & Marcus Pinto",
+        seedResourceIfMissing("res-127", "005.800 SEC", "The Web Application Hacker's Handbook (2nd Ed)", "Dafydd Stuttard & Marcus Pinto",
                 "Attacking and defending web applications: SQL injection, XSS, CSRF, authentication bypass, session hijacking, and API security.",
-                "https://covers.openlibrary.org/b/isbn/9781118026472-L.jpg", ResourceType.BOOK, 5, 2, "SHELF-G2",
+                "https://covers.openlibrary.org/b/isbn/9781118026472-L.jpg", ResourceType.BOOK, 5, 2, "SHELF-F2",
                 List.of("cybersecurity", "web-security", "pentesting"), ResourceStatus.AVAILABLE);
 
-        seedResourceIfMissing("res-130", "006.370 CV", "Computer Vision: Algorithms and Applications", "Richard Szeliski",
+        seedResourceIfMissing("res-128", "006.370 CV", "Computer Vision: Algorithms and Applications", "Richard Szeliski",
                 "Image formation, feature detection, motion estimation, structure from motion, 3D reconstruction, and deep learning vision models.",
-                "https://covers.openlibrary.org/b/isbn/9781848829343-L.jpg", ResourceType.BOOK, 4, 2, "SHELF-G3",
+                "https://covers.openlibrary.org/b/isbn/9781848829343-L.jpg", ResourceType.BOOK, 4, 2, "SHELF-F3",
                 List.of("computer-vision", "opencv", "image-processing"), ResourceStatus.AVAILABLE);
 
-        seedResourceIfMissing("res-131", "006.380 RL", "Reinforcement Learning: An Introduction (2nd Ed)", "Richard S. Sutton & Andrew G. Barto",
+        seedResourceIfMissing("res-129", "006.380 RL", "Reinforcement Learning: An Introduction (2nd Ed)", "Richard S. Sutton & Andrew G. Barto",
                 "Markov decision processes, dynamic programming, Monte Carlo methods, Temporal-Difference learning, Q-learning, and policy gradients.",
-                "https://covers.openlibrary.org/b/isbn/9780262039246-L.jpg", ResourceType.BOOK, 5, 3, "SHELF-H1",
+                "https://covers.openlibrary.org/b/isbn/9780262039246-L.jpg", ResourceType.BOOK, 5, 3, "SHELF-F4",
                 List.of("reinforcement-learning", "ai", "q-learning"), ResourceStatus.AVAILABLE);
 
-        seedResourceIfMissing("res-132", "005.140 TST", "Test Driven Development: By Example", "Kent Beck",
+        seedResourceIfMissing("res-130", "005.140 TDD", "Test Driven Development: By Example", "Kent Beck",
                 "Red-Green-Refactor workflow, writing clean automated unit tests, mock objects, and test-driven architecture design patterns.",
-                "https://covers.openlibrary.org/b/isbn/9780321146533-L.jpg", ResourceType.BOOK, 6, 4, "SHELF-H2",
+                "https://covers.openlibrary.org/b/isbn/9780321146533-L.jpg", ResourceType.BOOK, 6, 4, "SHELF-F5",
                 List.of("tdd", "testing", "software-engineering"), ResourceStatus.AVAILABLE);
 
-        seedResourceIfMissing("res-133", "005.730 DS", "Data Structures and Algorithm Analysis in C++", "Mark Allen Weiss",
+        seedResourceIfMissing("res-131", "005.730 DS", "Data Structures and Algorithm Analysis in C++", "Mark Allen Weiss",
                 "AVL trees, Splay trees, Priority Queues (Heaps), Disjoint Set data structure, Graph algorithms (Dijkstra, Kruskal), and amortized analysis.",
-                "https://covers.openlibrary.org/b/isbn/9780132847377-L.jpg", ResourceType.BOOK, 7, 4, "SHELF-H3",
+                "https://covers.openlibrary.org/b/isbn/9780132847377-L.jpg", ResourceType.BOOK, 7, 4, "SHELF-G1",
                 List.of("data-structures", "algorithms", "cpp"), ResourceStatus.AVAILABLE);
 
-        seedResourceIfMissing("res-134", "004.350 PAR", "An Introduction to Parallel Programming", "Peter Pacheco",
+        seedResourceIfMissing("res-132", "004.350 PAR", "An Introduction to Parallel Programming", "Peter Pacheco",
                 "MPI (Message Passing Interface), Pthreads, OpenMP multi-threading, GPU parallel computing, and performance scalability tuning.",
-                "https://covers.openlibrary.org/b/isbn/9780123742605-L.jpg", ResourceType.BOOK, 4, 2, "SHELF-I1",
+                "https://covers.openlibrary.org/b/isbn/9780123742605-L.jpg", ResourceType.BOOK, 4, 2, "SHELF-G2",
                 List.of("parallel-computing", "mpi", "openmp"), ResourceStatus.AVAILABLE);
 
-        seedResourceIfMissing("res-135", "005.300 K8S", "Kubernetes Up & Running (3rd Edition)", "Brendan Burns, Joe Beda, Kelsey Hightower",
+        seedResourceIfMissing("res-133", "005.300 K8S", "Kubernetes Up & Running (3rd Edition)", "Brendan Burns, Joe Beda, Kelsey Hightower",
                 "Container orchestration: Pods, Services, Ingress controllers, ConfigMaps, Secrets, Horizontal Pod Autoscaling, and Helm charts.",
-                "https://covers.openlibrary.org/b/isbn/9781098110208-L.jpg", ResourceType.BOOK, 5, 3, "SHELF-I2",
+                "https://covers.openlibrary.org/b/isbn/9781098110208-L.jpg", ResourceType.BOOK, 5, 3, "SHELF-G3",
                 List.of("kubernetes", "devops", "docker"), ResourceStatus.AVAILABLE);
 
-        seedResourceIfMissing("res-136", "005.133 GO", "The Go Programming Language", "Alan A. A. Donovan & Brian W. Kernighan",
+        seedResourceIfMissing("res-134", "005.133 GO", "The Go Programming Language", "Alan A. A. Donovan & Brian W. Kernighan",
                 "Goroutines, channels, interfaces, reflection, low-level unsafe pointer operations, and building concurrent cloud services in Go.",
-                "https://covers.openlibrary.org/b/isbn/9780134190440-L.jpg", ResourceType.BOOK, 6, 4, "SHELF-I3",
+                "https://covers.openlibrary.org/b/isbn/9780134190440-L.jpg", ResourceType.BOOK, 6, 4, "SHELF-G4",
                 List.of("golang", "concurrency", "cloud-native"), ResourceStatus.AVAILABLE);
 
-        seedResourceIfMissing("res-137", "005.133 PY", "Fluent Python (2nd Edition)", "Luciano Ramalho",
+        seedResourceIfMissing("res-135", "005.133 PY", "Fluent Python (2nd Edition)", "Luciano Ramalho",
                 "Pythonic data models, generator functions, coroutines, asyncio event loops, type hinting, decorators, and meta-programming.",
-                "https://covers.openlibrary.org/b/isbn/9781491946008-L.jpg", ResourceType.BOOK, 5, 3, "SHELF-J1",
+                "https://covers.openlibrary.org/b/isbn/9781491946008-L.jpg", ResourceType.BOOK, 5, 3, "SHELF-G5",
                 List.of("python", "advanced-python", "asyncio"), ResourceStatus.AVAILABLE);
 
-        seedResourceIfMissing("res-138", "006.310 PYT", "Programming PyTorch for Deep Learning", "Ian Pointer",
+        seedResourceIfMissing("res-136", "006.310 PYTORCH", "Programming PyTorch for Deep Learning", "Ian Pointer",
                 "Building, training, and deploying neural networks: CNNs, Transfer Learning, Recurrent Networks, TensorBoard, and PyTorch Lightning.",
-                "https://covers.openlibrary.org/b/isbn/9781492045359-L.jpg", ResourceType.BOOK, 5, 2, "SHELF-J2",
+                "https://covers.openlibrary.org/b/isbn/9781492045359-L.jpg", ResourceType.BOOK, 5, 2, "SHELF-H1",
                 List.of("pytorch", "deep-learning", "ai"), ResourceStatus.AVAILABLE);
 
-        seedResourceIfMissing("res-139", "005.741 CAS", "Cassandra: The Definitive Guide (3rd Edition)", "Jeff Carpenter & Eben Hewitt",
+        seedResourceIfMissing("res-137", "005.741 CASS", "Cassandra: The Definitive Guide (3rd Edition)", "Jeff Carpenter & Eben Hewitt",
                 "Distributed NoSQL database: peer-to-peer architecture, tuneable consistency levels, CQL, SSTables, and cross-datacenter replication.",
-                "https://covers.openlibrary.org/b/isbn/9781492055624-L.jpg", ResourceType.BOOK, 4, 2, "SHELF-J3",
+                "https://covers.openlibrary.org/b/isbn/9781492055624-L.jpg", ResourceType.BOOK, 4, 2, "SHELF-H2",
                 List.of("cassandra", "nosql", "distributed-database"), ResourceStatus.AVAILABLE);
 
-        seedResourceIfMissing("res-140", "004.220 ARCH", "Computer Architecture: A Quantitative Approach (6th Ed)", "John L. Hennessy & David A. Patterson",
+        seedResourceIfMissing("res-138", "004.220 ARCH", "Computer Architecture: A Quantitative Approach (6th Ed)", "John L. Hennessy & David A. Patterson",
                 "Instruction-level parallelism, speculative execution, cache hierarchies, domain-specific accelerators, and GPU SIMD architectures.",
-                "https://covers.openlibrary.org/b/isbn/9780128119051-L.jpg", ResourceType.BOOK, 5, 3, "SHELF-K1",
+                "https://covers.openlibrary.org/b/isbn/9780128119051-L.jpg", ResourceType.BOOK, 5, 3, "SHELF-H3",
                 List.of("computer-architecture", "hardware-theory", "processors"), ResourceStatus.AVAILABLE);
 
-        seedResourceIfMissing("res-141", "530.12 QUANT", "Principles of Quantum Mechanics (2nd Ed)", "R. Shankar",
+        seedResourceIfMissing("res-139", "530.12 QUANT", "Principles of Quantum Mechanics (2nd Ed)", "R. Shankar",
                 "Mathematical foundations of quantum mechanics: vector spaces, Dirac notation, harmonic oscillator, spin, and perturbation theory.",
-                "https://covers.openlibrary.org/b/isbn/9780306447908-L.jpg", ResourceType.BOOK, 4, 3, "SHELF-K2",
+                "https://covers.openlibrary.org/b/isbn/9780306447908-L.jpg", ResourceType.BOOK, 4, 3, "SHELF-H4",
                 List.of("quantum-mechanics", "physics", "mathematics"), ResourceStatus.AVAILABLE);
 
-        seedResourceIfMissing("res-142", "512.2 GROUPS", "Abstract Algebra (3rd Edition)", "David S. Dummit & Richard M. Foote",
+        seedResourceIfMissing("res-140", "512.2 GROUPS", "Abstract Algebra (3rd Edition)", "David S. Dummit & Richard M. Foote",
                 "Group theory, ring theory, Galois theory, module theory, vector spaces, and commutative algebra.",
-                "https://covers.openlibrary.org/b/isbn/9780471433347-L.jpg", ResourceType.BOOK, 5, 4, "SHELF-K3",
+                "https://covers.openlibrary.org/b/isbn/9780471433347-L.jpg", ResourceType.BOOK, 5, 4, "SHELF-H5",
                 List.of("abstract-algebra", "mathematics", "group-theory"), ResourceStatus.AVAILABLE);
 
-        seedResourceIfMissing("res-143", "515.35 DEQ", "Differential Equations & Linear Algebra (4th Ed)", "C. Henry Edwards & David E. Penney",
+        seedResourceIfMissing("res-141", "515.35 DEQ", "Differential Equations & Linear Algebra (4th Ed)", "C. Henry Edwards & David E. Penney",
                 "First-order equations, linear systems, eigenvalues, Laplace transforms, Fourier series, and boundary value problems.",
-                "https://covers.openlibrary.org/b/isbn/9780134491431-L.jpg", ResourceType.BOOK, 6, 4, "SHELF-K4",
+                "https://covers.openlibrary.org/b/isbn/9780134491431-L.jpg", ResourceType.BOOK, 6, 4, "SHELF-I1",
                 List.of("differential-equations", "linear-algebra", "math"), ResourceStatus.AVAILABLE);
 
-        seedResourceIfMissing("res-144", "519.5 PROB", "Probability & Random Processes for Electrical Engineering", "Alberto Leon-Garcia",
+        seedResourceIfMissing("res-142", "519.5 PROB", "Probability & Random Processes for Electrical Engineering", "Alberto Leon-Garcia",
                 "Probability spaces, random variables, Markov chains, spectral density, stationary processes, and queueing theory.",
-                "https://covers.openlibrary.org/b/isbn/9780201500882-L.jpg", ResourceType.BOOK, 5, 3, "SHELF-K5",
+                "https://covers.openlibrary.org/b/isbn/9780201500882-L.jpg", ResourceType.BOOK, 5, 3, "SHELF-I2",
                 List.of("probability", "stochastic", "math"), ResourceStatus.AVAILABLE);
 
-        seedResourceIfMissing("res-145", "621.381 CKT", "Microelectronic Circuits (8th Edition)", "Adel S. Sedra & Kenneth C. Smith",
+        seedResourceIfMissing("res-143", "621.381 CKT", "Microelectronic Circuits (8th Edition)", "Adel S. Sedra & Kenneth C. Smith",
                 "Operational amplifiers, MOSFETs, BJTs, frequency response, feedback amplifiers, and integrated circuit design.",
-                "https://covers.openlibrary.org/b/isbn/9780190853464-L.jpg", ResourceType.BOOK, 6, 4, "SHELF-K6",
+                "https://covers.openlibrary.org/b/isbn/9780190853464-L.jpg", ResourceType.BOOK, 6, 4, "SHELF-I3",
                 List.of("circuits", "electronics", "engineering"), ResourceStatus.AVAILABLE);
 
-        seedResourceIfMissing("res-146", "621.382 SIG", "Signals and Systems (2nd Edition)", "Alan V. Oppenheim & Alan S. Willsky",
+        seedResourceIfMissing("res-144", "621.382 SIG", "Signals and Systems (2nd Edition)", "Alan V. Oppenheim & Alan S. Willsky",
                 "Continuous-time and discrete-time signals, Fourier transforms, Laplace transforms, z-transforms, and linear time-invariant systems.",
-                "https://covers.openlibrary.org/b/isbn/9780138147570-L.jpg", ResourceType.BOOK, 7, 5, "SHELF-L1",
+                "https://covers.openlibrary.org/b/isbn/9780138147570-L.jpg", ResourceType.BOOK, 7, 5, "SHELF-I4",
                 List.of("signals-systems", "fourier", "dsp"), ResourceStatus.AVAILABLE);
 
-        seedResourceIfMissing("res-147", "621.389 DSP", "Discrete-Time Signal Processing (3rd Edition)", "Alan V. Oppenheim & Ronald W. Schafer",
+        seedResourceIfMissing("res-145", "621.389 DSP", "Discrete-Time Signal Processing (3rd Edition)", "Alan V. Oppenheim & Ronald W. Schafer",
                 "Sampling theory, z-transform analysis, FIR/IIR filter design, Fast Fourier Transform (FFT) algorithms, and multirate DSP.",
-                "https://covers.openlibrary.org/b/isbn/9780131988422-L.jpg", ResourceType.BOOK, 5, 3, "SHELF-L2",
+                "https://covers.openlibrary.org/b/isbn/9780131988422-L.jpg", ResourceType.BOOK, 5, 3, "SHELF-I5",
                 List.of("dsp", "signal-processing", "fft"), ResourceStatus.AVAILABLE);
 
-        seedResourceIfMissing("res-148", "629.8 CTL", "Modern Control Engineering (5th Edition)", "Katsuhiko Ogata",
+        seedResourceIfMissing("res-146", "629.8 CTL", "Modern Control Engineering (5th Edition)", "Katsuhiko Ogata",
                 "State-space representation, root locus analysis, Bode plots, Nyquist stability criterion, and PID controller design.",
-                "https://covers.openlibrary.org/b/isbn/9780136156734-L.jpg", ResourceType.BOOK, 4, 3, "SHELF-L3",
+                "https://covers.openlibrary.org/b/isbn/9780136156734-L.jpg", ResourceType.BOOK, 4, 3, "SHELF-J1",
                 List.of("control-systems", "robotics", "engineering"), ResourceStatus.AVAILABLE);
 
-        seedResourceIfMissing("res-149", "511.5 GRAPH", "Introduction to Graph Theory (2nd Edition)", "Douglas B. West",
+        seedResourceIfMissing("res-147", "511.5 GRAPH", "Introduction to Graph Theory (2nd Edition)", "Douglas B. West",
                 "Trees, matchings, planarity, colorings, Eulerian and Hamiltonian circuits, network flows, and random graphs.",
-                "https://covers.openlibrary.org/b/isbn/9780130144003-L.jpg", ResourceType.BOOK, 5, 4, "SHELF-L4",
+                "https://covers.openlibrary.org/b/isbn/9780130144003-L.jpg", ResourceType.BOOK, 5, 4, "SHELF-J2",
                 List.of("graph-theory", "discrete-math", "algorithms"), ResourceStatus.AVAILABLE);
 
-        seedResourceIfMissing("res-150", "512.5 LA", "Linear Algebra and Its Applications (6th Edition)", "David C. Lay, Steven R. Lay",
+        seedResourceIfMissing("res-148", "512.5 LA", "Linear Algebra and Its Applications (6th Edition)", "David C. Lay, Steven R. Lay",
                 "Matrix algebra, vector spaces, linear transformations, eigenvalues, singular value decomposition (SVD), and least squares.",
-                "https://covers.openlibrary.org/b/isbn/9780135851159-L.jpg", ResourceType.BOOK, 8, 6, "SHELF-L5",
+                "https://covers.openlibrary.org/b/isbn/9780135851159-L.jpg", ResourceType.BOOK, 8, 6, "SHELF-J3",
                 List.of("linear-algebra", "matrices", "math"), ResourceStatus.AVAILABLE);
 
-        seedResourceIfMissing("res-151", "005.1 DP", "Design Patterns: Elements of Reusable Object-Oriented Software", "Erich Gamma, Richard Helm (Gang of Four)",
+        seedResourceIfMissing("res-149", "005.1 DP", "Design Patterns: Elements of Reusable Object-Oriented Software", "Erich Gamma, Richard Helm (Gang of Four)",
                 "The classic Gang of Four reference: Creational, Structural, and Behavioral OOP design patterns.",
-                "https://covers.openlibrary.org/b/isbn/9780201633610-L.jpg", ResourceType.BOOK, 6, 4, "SHELF-M1",
+                "https://covers.openlibrary.org/b/isbn/9780201633610-L.jpg", ResourceType.BOOK, 6, 4, "SHELF-J4",
                 List.of("design-patterns", "gof", "oop"), ResourceStatus.AVAILABLE);
 
-        seedResourceIfMissing("res-152", "005.1 REF", "Refactoring: Improving the Design of Existing Code (2nd Ed)", "Martin Fowler",
+        seedResourceIfMissing("res-150", "005.1 REF", "Refactoring: Improving the Design of Existing Code (2nd Ed)", "Martin Fowler",
                 "Catalog of refactorings, code smells, testing techniques, and object-oriented architectural redesign.",
-                "https://covers.openlibrary.org/b/isbn/9780134757599-L.jpg", ResourceType.BOOK, 5, 3, "SHELF-M2",
+                "https://covers.openlibrary.org/b/isbn/9780134757599-L.jpg", ResourceType.BOOK, 5, 3, "SHELF-J5",
                 List.of("refactoring", "clean-code", "fowler"), ResourceStatus.AVAILABLE);
 
-        seedResourceIfMissing("res-153", "005.1 DDD", "Domain-Driven Design: Tackling Complexity in Software", "Eric Evans",
+        seedResourceIfMissing("res-151", "005.1 DDD", "Domain-Driven Design: Tackling Complexity in Software", "Eric Evans",
                 "Bounded contexts, ubiquitous language, aggregates, entities, value objects, and domain event architectures.",
-                "https://covers.openlibrary.org/b/isbn/9780321125217-L.jpg", ResourceType.BOOK, 4, 2, "SHELF-M3",
+                "https://covers.openlibrary.org/b/isbn/9780321125217-L.jpg", ResourceType.BOOK, 4, 2, "SHELF-K1",
                 List.of("ddd", "architecture", "domain-modeling"), ResourceStatus.AVAILABLE);
 
-        seedResourceIfMissing("res-154", "005.1 ARCH1", "Clean Architecture: A Craftsman's Guide to Software Structure", "Robert C. Martin (Uncle Bob)",
+        seedResourceIfMissing("res-152", "005.1 ARCH", "Clean Architecture: A Craftsman's Guide to Software Structure", "Robert C. Martin (Uncle Bob)",
                 "Solid design principles, component boundaries, dependency inversion, entity rules, and decoupled framework architectures.",
-                "https://covers.openlibrary.org/b/isbn/9780134494166-L.jpg", ResourceType.BOOK, 6, 4, "SHELF-M4",
+                "https://covers.openlibrary.org/b/isbn/9780134494166-L.jpg", ResourceType.BOOK, 6, 4, "SHELF-K2",
                 List.of("clean-architecture", "solid-principles", "software-design"), ResourceStatus.AVAILABLE);
 
-        seedResourceIfMissing("res-155", "006.310 NLP", "Natural Language Processing with Transformers", "Lewis Tunstall, Leandro von Werra",
+        seedResourceIfMissing("res-153", "006.310 NLP2", "Natural Language Processing with Transformers", "Lewis Tunstall, Leandro von Werra",
                 "Hugging Face Transformers library: BERT, GPT, T5, fine-tuning sequence classification, text generation, and RAG pipelines.",
-                "https://covers.openlibrary.org/b/isbn/9781098103248-L.jpg", ResourceType.BOOK, 5, 3, "SHELF-K2",
+                "https://covers.openlibrary.org/b/isbn/9781098103248-L.jpg", ResourceType.BOOK, 5, 3, "SHELF-K3",
                 List.of("nlp", "transformers", "huggingface"), ResourceStatus.AVAILABLE);
 
-        seedResourceIfMissing("res-156", "006.310 GNN", "Graph Representation Learning", "William L. Hamilton",
+        seedResourceIfMissing("res-154", "006.310 GNN2", "Graph Representation Learning", "William L. Hamilton",
                 "Graph Neural Networks (GNNs), node embeddings, GraphSAGE, Graph Attention Networks (GAT), and link prediction algorithms.",
-                "https://covers.openlibrary.org/b/isbn/9781681739632-L.jpg", ResourceType.BOOK, 4, 2, "SHELF-K3",
+                "https://covers.openlibrary.org/b/isbn/9781681739632-L.jpg", ResourceType.BOOK, 4, 2, "SHELF-K4",
                 List.of("gnn", "graph-learning", "ai"), ResourceStatus.AVAILABLE);
 
-        seedResourceIfMissing("res-157", "005.133 TS", "Programming TypeScript", "Boris Cherny",
+        seedResourceIfMissing("res-155", "005.133 TS2", "Programming TypeScript", "Boris Cherny",
                 "Advanced type system: generic constraints, mapped types, conditional types, algebraic data types, and strict compiler configurations.",
-                "https://covers.openlibrary.org/b/isbn/9781491999837-L.jpg", ResourceType.BOOK, 6, 4, "SHELF-L1",
+                "https://covers.openlibrary.org/b/isbn/9781491999837-L.jpg", ResourceType.BOOK, 6, 4, "SHELF-K5",
                 List.of("typescript", "javascript", "type-system"), ResourceStatus.AVAILABLE);
 
-        seedResourceIfMissing("res-158", "005.276 REACT", "Learning React (2nd Edition)", "Alex Banks & Eve Porcello",
+        seedResourceIfMissing("res-156", "005.276 REACT2", "Learning React (2nd Edition)", "Alex Banks & Eve Porcello",
                 "Modern React 18: functional components, custom hooks, context state management, server components, and performance optimization.",
-                "https://covers.openlibrary.org/b/isbn/9781492051725-L.jpg", ResourceType.BOOK, 5, 3, "SHELF-L2",
+                "https://covers.openlibrary.org/b/isbn/9781492051725-L.jpg", ResourceType.BOOK, 5, 3, "SHELF-L1",
                 List.of("react", "frontend", "javascript"), ResourceStatus.AVAILABLE);
 
-        seedResourceIfMissing("res-159", "005.1 SRE", "Site Reliability Engineering: How Google Runs Production Systems", "Betsy Beyer, Chris Jones",
+        seedResourceIfMissing("res-157", "005.1 SRE", "Site Reliability Engineering: How Google Runs Production Systems", "Betsy Beyer, Chris Jones",
                 "SLOs, SLIs, error budgets, monitoring, incident management, automation, postmortems, and distributed system reliability.",
-                "https://covers.openlibrary.org/b/isbn/9781491929124-L.jpg", ResourceType.BOOK, 5, 3, "SHELF-M5",
+                "https://covers.openlibrary.org/b/isbn/9781491929124-L.jpg", ResourceType.BOOK, 5, 3, "SHELF-L2",
                 List.of("sre", "devops", "google"), ResourceStatus.AVAILABLE);
 
-        seedResourceIfMissing("res-160", "005.1 BPO", "Building Microservices (2nd Edition)", "Sam Newman",
+        seedResourceIfMissing("res-158", "005.1 BPO", "Building Microservices (2nd Edition)", "Sam Newman",
                 "Microservice decomposition, API gateways, service mesh, saga transactions, distributed logging, and continuous deployment.",
-                "https://covers.openlibrary.org/b/isbn/9781492034025-L.jpg", ResourceType.BOOK, 6, 4, "SHELF-M6",
+                "https://covers.openlibrary.org/b/isbn/9781492034025-L.jpg", ResourceType.BOOK, 6, 4, "SHELF-L3",
                 List.of("microservices", "architecture", "distributed-systems"), ResourceStatus.AVAILABLE);
 
-        log.info("LIBRARIX MongoDB 60-items dataset initialization complete. Total items in DB: {}", resourceRepository.count());
+        seedResourceIfMissing("res-159", "004.220 ARM", "ARM Assembly Language: Fundamentals and Techniques (2nd Ed)", "William Hohl & Christopher Hinds",
+                "Assembly language programming, Cortex-M architectures, memory maps, floating point unit operations, and interrupt handlers.",
+                "https://covers.openlibrary.org/b/isbn/9781482229851-L.jpg", ResourceType.BOOK, 4, 3, "SHELF-L4",
+                List.of("assembly", "arm", "embedded-systems"), ResourceStatus.AVAILABLE);
+
+        seedResourceIfMissing("res-160", "005.133 KOTLIN", "Kotlin in Action", "Dmitry Jemerov & Svetlana Isakova",
+                "Null safety, extension functions, coroutines, higher-order functions, delegates, and Android app architecture.",
+                "https://covers.openlibrary.org/b/isbn/9781617293290-L.jpg", ResourceType.BOOK, 5, 3, "SHELF-L5",
+                List.of("kotlin", "android", "jvm"), ResourceStatus.AVAILABLE);
+
+        log.info("LIBRARIX MongoDB book catalog initialization complete. Total books in DB: {}", resourceRepository.count());
     }
 
     private void seedResourceIfMissing(String id, String barcode, String title, String authorOrBrand,
@@ -388,7 +388,7 @@ public class DataInitializer implements CommandLineRunner {
                     .createdAt(Instant.now())
                     .build();
             resourceRepository.save(r);
-            log.info("Inserted new dataset item into MongoDB: [{}] {}", barcode, title);
+            log.info("Inserted new book item into MongoDB: [{}] {}", barcode, title);
         }
     }
 }

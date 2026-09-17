@@ -15,18 +15,12 @@ export default function ResourceCard({ resource }: ResourceCardProps) {
   const isAvailable = resource.availableQuantity > 0;
   const [imgError, setImgError] = useState(false);
 
-  const typeColorMap = {
+  const typeColorMap: Record<string, string> = {
     BOOK: 'bg-highlight',
-    HARDWARE: 'bg-sky',
-    LAB_KIT: 'bg-mint',
-    SEMINAR_ROOM: 'bg-blush',
   };
 
-  const typeIconMap = {
+  const typeIconMap: Record<string, React.ReactNode> = {
     BOOK: <BookOpen className="w-4 h-4 text-ink" />,
-    HARDWARE: <Cpu className="w-4 h-4 text-ink" />,
-    LAB_KIT: <Wrench className="w-4 h-4 text-ink" />,
-    SEMINAR_ROOM: <DoorOpen className="w-4 h-4 text-ink" />,
   };
 
   return (

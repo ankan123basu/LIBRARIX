@@ -631,9 +631,6 @@ export default function AdminPage() {
                     className="w-full bg-paper-2 border-2 border-ink px-3 py-2 font-bold text-ink focus:outline-none focus:ring-2 focus:ring-ink"
                   >
                     <option value="BOOK">BOOK</option>
-                    <option value="LAB_KIT">LAB_KIT</option>
-                    <option value="HARDWARE">HARDWARE</option>
-                    <option value="SEMINAR_ROOM">SEMINAR_ROOM</option>
                   </select>
                 </div>
 

@@ -8,7 +8,7 @@ This document analyzes the technical trade-offs evaluated during the architectur
 
 | Criteria | Choice: MongoDB (Spring Data Mongo) | Alternative: PostgreSQL (Spring Data JPA) | Trade-Off Rationale |
 | :--- | :--- | :--- | :--- |
-| **Schema Flexibility** | Schema-less `@Document` objects permit rapid extension of resource attributes (e.g. kit hardware specs, book ISBNs). | Rigid tabular schema requiring migrations for metadata changes. | Chosen MongoDB for dynamic asset types (Books, Lab Kits, Rooms) with varying properties. |
+| **Schema Flexibility** | Schema-less `@Document` objects permit rapid extension of resource attributes (e.g. edition numbers, publisher metadata, book ISBNs). | Rigid tabular schema requiring migrations for metadata changes. | Chosen MongoDB for dynamic book metadata schemas with varying properties. |
 | **Queue Atomic Updates** | Single-document atomic operations (`findAndModify`, `$push`). | Multi-table ACID joins with explicit row locks (`SELECT FOR UPDATE`). | MongoDB allows atomic queue array updates without explicit table locks. |
 | **ACID Multi-Doc Transactions** | Supported via replica sets, but adds latency overhead. | Native multi-table transactional guarantees out of the box. | Tradeoff accepted: LIBRARIX relies on single-document atomic updates and `@Version` optimistic locking. |
 

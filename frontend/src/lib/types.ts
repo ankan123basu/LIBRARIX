@@ -1,6 +1,6 @@
 export type Role = 'ROLE_MEMBER' | 'ROLE_CURATOR' | 'ROLE_LIBRARIAN' | 'ROLE_ADMIN';
 export type UserTier = 'REGULAR' | 'CAPSTONE' | 'FACULTY';
-export type ResourceType = 'BOOK' | 'LAB_KIT' | 'HARDWARE' | 'SEMINAR_ROOM';
+export type ResourceType = 'BOOK';
 export type ResourceStatus = 'AVAILABLE' | 'BORROWED' | 'RESERVED' | 'MAINTENANCE';
 export type LoanStatus = 'ACTIVE' | 'RETURNED' | 'OVERDUE';
 export type QueueStatus = 'WAITING' | 'FULFILLED' | 'CANCELLED' | 'EXPIRED';

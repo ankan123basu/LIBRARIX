@@ -157,7 +157,7 @@ export default function Hero3DBook() {
           </div>
           <div className="space-y-2 font-mono text-xs">
             <div className="bg-paper p-2 border-2 border-ink">STATUS: ACTIVE</div>
-            <div className="bg-mint p-2 border-2 border-ink">TYPE: HARDWARE / BOOK</div>
+            <div className="bg-mint p-2 border-2 border-ink">TYPE: ACADEMIC BOOK</div>
           </div>
           <div className="text-right font-mono text-[10px] font-bold text-ink">
             ★ NEOBRUTALIST 2D FALLBACK

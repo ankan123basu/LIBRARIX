@@ -8,7 +8,7 @@ This document details key architectural decisions, data structure selections, an
 
 ### Problem Statement
 Standard library systems employ a strict FIFO (First-In, First-Out) waitlist queue. In an academic campus setting, this creates severe inefficiencies:
-- A student requiring a hardware kit for a Capstone project due in 48 hours is blocked behind general interest requests.
+- A student requiring a high-demand core textbook for a Capstone project due in 48 hours is blocked behind general interest requests.
 - Conversely, pure priority queues cause **starvation**: low-priority members may never receive high-demand resources.
 
 ### Solution: Dynamic Multi-Criteria Score Algorithm with Wait-Time Aging
@@ -30,8 +30,7 @@ Instead of hardcoding fine logic inside the controller or repository, LIBRARIX d
 ### Rule Matrix:
 1. **Grace Period**: $24\text{ hours}$ post due-date exemption.
 2. **Category Rate Differentiation**:
-   - `LAB_KIT` & `HARDWARE`: High rate ($\$5.00/\text{day}$) to enforce rapid return of expensive shared lab assets.
-   - `BOOK` & `SEMINAR_ROOM`: Base rate ($\$2.00/\text{day}$).
+   - `BOOK`: Standard daily rate ($\$2.00/\text{day}$).
 3. **Cap Constraint**: Penalties are bounded by a configurable cap ($\$50.00\text{ max}$) to avoid unmanageable debt traps.
 4. **Administrative Waiver Control**: `ROLE_LIBRARIAN` and `ROLE_ADMIN` can waive fines with audit trail logging (`waivedBy` field).
 
@@ -40,6 +39,6 @@ Instead of hardcoding fine logic inside the controller or repository, LIBRARIX d
 ## 3. Concurrency & Locking Strategy
 
 ### MongoDB Optimistic Locking
-To prevent race conditions during high-concurrency item borrowing (e.g., 100 students attempting to borrow the last available Oscilloscope kit simultaneously):
+To prevent race conditions during high-concurrency book borrowing (e.g., 100 students attempting to borrow the last available CLRS textbook copy simultaneously):
 - The `Resource` entity includes a `@Version Long version` attribute.
 - Spring Data Mongo automatically verifies version matching during updates. If another transaction modified the resource concurrently, an `OptimisticLockingFailureException` is thrown, preventing double-allocation.

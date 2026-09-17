@@ -119,9 +119,6 @@ public class ShelfSlottingOptimizer {
     }
 
     private String getSpineColorHex(ResourceType type, boolean isEyeLevel) {
-        if (type == ResourceType.HARDWARE) return "#a855f7"; // Purple
-        if (type == ResourceType.LAB_KIT) return "#10b981"; // Emerald
-        if (type == ResourceType.SEMINAR_ROOM) return "#f59e0b"; // Amber
         return isEyeLevel ? "#6366f1" : "#38bdf8"; // Indigo / Sky
     }
 }

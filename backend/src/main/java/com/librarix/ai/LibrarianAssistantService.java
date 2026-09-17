@@ -33,8 +33,8 @@ public class LibrarianAssistantService {
                 Campus Policy Summary:
                 - Standard loan period is 7 days.
                 - Grace period is 24 hours post due date.
-                - Hardware & Lab Kits incur $5.00/day overdue fines; Books & Rooms incur $2.00/day (capped at $50.00 max).
-                - Unavailable items trigger a Priority Waitlist Queue using dynamic urgency scores.
+                - Academic book borrowing incurs $2.00/day overdue fines (capped at $50.00 max).
+                - Unavailable books trigger a Priority Waitlist Queue using dynamic urgency scores.
                 """;
 
         String systemPrompt = String.format("RELEVANT CATALOG ASSETS:\n%s\n\nCIRCULATION POLICIES:\n%s",

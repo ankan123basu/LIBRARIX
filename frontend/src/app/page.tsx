@@ -54,7 +54,7 @@ export default function Home() {
               </h1>
 
               <p className="font-body text-base sm:text-lg text-ink leading-relaxed">
-                LIBRARIX is a modern campus library system for academic textbooks, lab hardware kits, oscilloscopes, and seminar study rooms—powered by fair reservation queues, AI semantic search, and real-time alerts.
+                LIBRARIX is an enterprise-grade campus textbook circulation system—powered by a Weighted Fair Reservation Queue Engine, 3D Spatial Shelf Placement, AI Semantic Search, and real-time STOMP WebSocket notifications for academic books.
               </p>
 
               <div className="flex flex-wrap items-center gap-4 pt-2">

@@ -74,17 +74,17 @@ export default function Footer() {
               </li>
               <li>
                 <Link href="/catalog" className="hover:text-ink hover:underline">
-                  Hardware Kits & Microcontrollers
+                  Computer Science & Algorithms
                 </Link>
               </li>
               <li>
                 <Link href="/catalog" className="hover:text-ink hover:underline">
-                  Digital Oscilloscopes & Logic Analyzers
+                  Mathematics & Physics Monograph Vault
                 </Link>
               </li>
               <li>
                 <Link href="/catalog" className="hover:text-ink hover:underline">
-                  Capstone Seminar Rooms
+                  Artificial Intelligence & Data Science
                 </Link>
               </li>
               <li>

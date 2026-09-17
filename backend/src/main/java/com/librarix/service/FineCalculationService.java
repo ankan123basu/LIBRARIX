@@ -15,9 +15,7 @@ import java.time.Instant;
  *
  * Business Rules:
  * 1. Grace Period: No fine applied if returned within grace period (e.g. 24h post due date).
- * 2. Resource-Specific Rates:
- *    - LAB_KIT / HARDWARE: High daily rate ($5.00/day) due to lab scarcity.
- *    - BOOK / SEMINAR_ROOM: Standard daily rate ($2.00/day).
+ * 2. Book Circulation Rate: Standard daily rate ($2.00/day).
  * 3. Max Fine Cap: Maximum fine capped at $50.00 per loan instance to prevent uncollectible penalties.
  */
 @Service
@@ -26,9 +24,6 @@ public class FineCalculationService {
 
     @Value("${librarix.fine-rules.base-rate-per-day:2.0}")
     private double baseRatePerDay;
-
-    @Value("${librarix.fine-rules.lab-kit-rate-per-day:5.0}")
-    private double labKitRatePerDay;
 
     @Value("${librarix.fine-rules.max-fine-cap:50.0}")
     private double maxFineCap;
@@ -53,16 +48,8 @@ public class FineCalculationService {
         long chargeableHours = totalOverdueHours - gracePeriodHours;
         double chargeableDays = Math.ceil((double) chargeableHours / 24.0);
 
-        double dailyRate = getDailyRateForResource(resource.getType());
-        double calculatedFine = chargeableDays * dailyRate;
+        double calculatedFine = chargeableDays * baseRatePerDay;
 
         return Math.min(calculatedFine, maxFineCap);
-    }
-
-    private double getDailyRateForResource(ResourceType type) {
-        if (type == ResourceType.LAB_KIT || type == ResourceType.HARDWARE) {
-            return labKitRatePerDay;
-        }
-        return baseRatePerDay;
     }
 }

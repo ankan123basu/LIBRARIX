@@ -362,10 +362,7 @@ export default function DashboardPage() {
                 onChange={(e) => setType(e.target.value)}
                 className="w-full bg-paper border-3 border-ink px-3 py-2 text-ink font-bold focus:outline-none"
               >
-                <option value="BOOK">Book</option>
-                <option value="HARDWARE">Hardware Kit</option>
-                <option value="LAB_KIT">Lab Equipment</option>
-                <option value="SEMINAR_ROOM">Seminar Room</option>
+                <option value="BOOK">Academic Book / Textbook</option>
               </select>
               <input
                 type="number"
