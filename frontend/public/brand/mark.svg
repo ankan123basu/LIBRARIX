@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <!-- Hard offset shadow -->
+  <rect x="8" y="12" width="44" height="44" rx="4" fill="#0B0B0B" />
+  <!-- Main shape -->
+  <rect x="4" y="8" width="44" height="44" rx="4" fill="#FFE14D" stroke="#0B0B0B" stroke-width="4" stroke-linejoin="round" />
+  <!-- Open book / stacked spines lines -->
+  <path d="M14 20H38" stroke="#0B0B0B" stroke-width="4" stroke-linecap="round" />
+  <path d="M14 30H38" stroke="#0B0B0B" stroke-width="4" stroke-linecap="round" />
+  <path d="M14 40H28" stroke="#0B0B0B" stroke-width="4" stroke-linecap="round" />
+  <!-- Accent badge block -->
+  <rect x="30" y="34" width="12" height="12" fill="#E23A2E" stroke="#0B0B0B" stroke-width="2" />
+</svg>

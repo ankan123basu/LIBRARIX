@@ -1,0 +1,29 @@
+server:
+  port: 8085
+
+spring:
+  application:
+    name: librarix-backend
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/librarix
+      auto-index-creation: true
+
+librarix:
+  jwt:
+    secret: 9a2f8c4e7b1d3f6a8c5e2b0d9f7a4c1e3b5d8f6a9c2e0b7d4f1a8c3e5b2d9f7a
+    expiration-ms: 86400000 # 24 hours
+  fine-rules:
+    base-rate-per-day: 2.0
+    lab-kit-rate-per-day: 5.0
+    max-fine-cap: 50.0
+    grace-period-hours: 24
+  ai:
+    groq-api-key: ${GROQ_API_KEY:YOUR_GROQ_API_KEY_HERE}
+    groq-model: ${GROQ_MODEL:openai/gpt-oss-120b}
+
+logging:
+  level:
+    com.librarix: DEBUG
+    org.springframework.data.mongodb: INFO
+    org.springframework.security: INFO

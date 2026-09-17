@@ -1,0 +1,55 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --paper:    #F7F5EF;
+  --paper-2:  #FFFFFF;
+  --ink:      #0B0B0B;
+  --stamp:    #E23A2E;
+  --highlight:#FFE14D;
+  --mint:     #7DE8A8;
+  --sky:      #9CCBFF;
+  --blush:    #FFA8CE;
+  --lilac:    #CDB8FF;
+  --shadow:   #0B0B0B;
+}
+
+body {
+  background-color: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-space), sans-serif;
+  overflow-x: hidden;
+}
+
+/* 24px Dotted Grid Background */
+.bg-dotted-grid {
+  background-image: radial-gradient(var(--ink) 1px, transparent 1px);
+  background-size: 24px 24px;
+  opacity: 0.12;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--paper);
+  border-left: 3px solid var(--ink);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--ink);
+}
+
+/* Keyboard focus rings */
+a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
+  outline: 3px solid var(--ink) !important;
+  outline-offset: 3px !important;
+}
+
+/* Perforated dashed tear edge for notice slips */
+.border-dashed-perforated {
+  border-style: dashed;
+  border-width: 2px;
+  border-color: var(--ink);
+}

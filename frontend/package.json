@@ -1,0 +1,38 @@
+{
+  "name": "librarix-frontend",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev -p 3000",
+    "build": "next build",
+    "start": "next start -p 3000",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@react-three/drei": "^9.102.0",
+    "@react-three/fiber": "^8.17.10",
+    "@stomp/stompjs": "^7.0.0",
+    "@types/three": "^0.162.0",
+    "clsx": "^2.1.0",
+    "fflate": "^0.8.3",
+    "lucide-react": "^0.344.0",
+    "next": "14.1.0",
+    "ogl": "^1.0.11",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "sockjs-client": "^1.6.1",
+    "tailwind-merge": "^2.2.1",
+    "three": "^0.162.0",
+    "three-stdlib": "^2.36.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.20",
+    "@types/react": "^18.2.58",
+    "@types/react-dom": "^18.2.19",
+    "@types/sockjs-client": "^1.5.4",
+    "autoprefixer": "^10.4.17",
+    "postcss": "^8.4.35",
+    "tailwindcss": "^3.4.1",
+    "typescript": "^5.3.3"
+  }
+}

@@ -1,0 +1,23 @@
+# IDE & Editor files
+.idea/
+.vscode/
+*.swp
+*.iml
+.DS_Store
+
+# Build Outputs & Logs
+**/target/
+**/node_modules/
+**/.next/
+**/dist/
+**/build/
+*.log
+
+# Environment variables & Secret overrides
+.env
+.env.local
+.env.production
+application-local.yml
+**/application-local.yml
+*.key
+*.pem

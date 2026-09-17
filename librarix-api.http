@@ -1,0 +1,92 @@
+### ==========================================
+### LIBRARIX REST API TEST COLLECTION (EXTENSIONS INCLUDED)
+### Base URL: http://localhost:8085
+### ==========================================
+
+@baseUrl = http://localhost:8085
+
+### ------------------------------------------
+### 1. AUTHENTICATION & REFRESH TOKEN ROTATION
+### ------------------------------------------
+
+# @name loginAdmin
+POST {{baseUrl}}/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "admin@librarix.edu",
+  "password": "AdminPass123!"
+}
+
+> {%
+  client.global.set("adminToken", response.body.token);
+  client.global.set("adminRefreshToken", response.body.refreshToken);
+%}
+
+###
+
+# Refresh Access Token
+POST {{baseUrl}}/api/auth/refresh
+Content-Type: application/json
+
+{
+  "refreshToken": "{{adminRefreshToken}}"
+}
+
+###
+
+# @name loginAlice
+POST {{baseUrl}}/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "alice@librarix.edu",
+  "password": "StudentPass123!"
+}
+
+> {%
+  client.global.set("aliceToken", response.body.token);
+%}
+
+
+### ------------------------------------------
+### 2. 3D SHELF SLOTTER & POSITIONING API
+### ------------------------------------------
+
+# Get 3D Shelf Layout Coordinates (R3F Canvas)
+GET {{baseUrl}}/api/shelf/layout
+
+###
+
+# Re-optimize 3D Shelf Layout (ROLE_CURATOR or ROLE_ADMIN)
+POST {{baseUrl}}/api/shelf/reoptimize
+Authorization: Bearer {{adminToken}}
+
+
+### ------------------------------------------
+### 3. ISOLATED AI PACKAGE ENDPOINTS (/api/ai)
+### ------------------------------------------
+
+# AI Feature 1: Semantic Search (Cosine Similarity over TF-IDF vectors)
+GET {{baseUrl}}/api/ai/search/semantic?q=CUDA+Robotics+Kit&limit=5
+
+###
+
+# AI Feature 2: Ask the Librarian (Grounded RAG Assistant)
+POST {{baseUrl}}/api/ai/ask
+Content-Type: application/json
+
+{
+  "question": "What lab kits are available for robotics projects and what is the overdue fine rule?"
+}
+
+###
+
+# AI Feature 3: Personalized Recommendations (Co-Borrow Graph Affinity)
+GET {{baseUrl}}/api/ai/recommendations/mine?limit=6
+Authorization: Bearer {{aliceToken}}
+
+###
+
+# AI Feature 4: Exam Demand Time-Series Forecasting
+GET {{baseUrl}}/api/ai/forecast
