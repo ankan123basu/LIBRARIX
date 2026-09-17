@@ -1,8 +1,8 @@
 <div align="center">
-  <img src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=300&q=80" alt="LIBRARIX Emblem" width="130" style="border-radius: 24px; border: 3px solid #0B0B0B; box-shadow: 6px 6px 0px #0B0B0B;" />
+  <img src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=300&q=80" alt="LIBRARIX Emblem" width="130" style="border-radius: 50%; border: 3px solid #0B0B0B; box-shadow: 6px 6px 0px #0B0B0B;" />
   <h1>LIBRARIX (लाइब्रेरीक्स)</h1>
-  <p><strong><em>"Intelligent Circulation, 3D Spatial Slotting & Weighted Fair Reservation Queue Engine"</em></strong></p>
-  <p><em>Enterprise-Grade Full-Stack Campus Resource Circulation Platform for Technical Textbooks, Hardware Kits, Digital Oscilloscopes, and Seminar Study Rooms</em></p>
+  <p><strong><em>"Smart Resource Allocation & Weighted Fair Reservation Queue Engine"</em></strong></p>
+  <p><em>Algorithmic Campus Resource Allocation, Priority Waitlist Management & RAG Semantic Search Platform</em></p>
 </div>
 
 <div align="center">
@@ -12,7 +12,6 @@
 [![MongoDB 7.0](https://img.shields.io/badge/MongoDB-7.0-47A248?style=for-the-badge&logo=mongodb&logoColor=white)](https://mongodb.com)
 [![Next.js 14](https://img.shields.io/badge/Next.js-14.1-black?style=for-the-badge&logo=next.js&logoColor=white)](https://nextjs.org)
 [![React 18](https://img.shields.io/badge/React-18.2-61DAFB?style=for-the-badge&logo=react&logoColor=black)](https://react.dev)
-[![Three.js](https://img.shields.io/badge/Three.js-R3F-black?style=for-the-badge&logo=three.js&logoColor=white)](https://threejs.org)
 [![STOMP WebSockets](https://img.shields.io/badge/WebSocket-STOMP-FF6A1A?style=for-the-badge&logo=websocket&logoColor=white)](https://spring.io/guides/gs/messaging-stomp-websocket/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind-Neobrutalism-38BDF8?style=for-the-badge&logo=tailwindcss&logoColor=white)](https://tailwindcss.com)
 [![Docker](https://img.shields.io/badge/Docker-Enabled-2496ED?style=for-the-badge&logo=docker&logoColor=white)](https://docker.com)
@@ -21,9 +20,9 @@
 
 ---
 
-**LIBRARIX (लाइब्रेरीक्स)** is an enterprise-grade campus circulation system built to manage high-demand academic assets — software engineering textbooks, FPGA trainer kits, digital storage oscilloscopes, logic analyzers, and capstone seminar rooms.
+**LIBRARIX (लाइब्रेरीक्स)** is an algorithmic campus resource circulation and allocation platform engineered to eliminate the core flaws of legacy resource allocation tools: **waitlist starvation**, **resource hogging by inactive users**, and **primitive keyword-only search**.
 
-Powered by a **Weighted Fair Reservation Queueing Engine**, **3D Greedy Warehouse-Slotting Optimizer**, **RAG Semantic Vector Search with HuggingFace L2 Tokenizer**, and **Real-time STOMP WebSocket Notifications**, LIBRARIX prevents queue starvation for senior capstone teams while delivering a spatial 3D WebGL library browsing experience.
+Unlike traditional platforms that rely on naive First-In-First-Out (FIFO) queues, LIBRARIX introduces a production-grade algorithmic engine powered by **Weighted Fair Reservation Queuing (WFQ)**, **RAG Semantic Vector Search with HuggingFace L2 Normalization**, and **Real-Time STOMP WebSockets**.
 
 ---
 
@@ -57,7 +56,7 @@ Powered by a **Weighted Fair Reservation Queueing Engine**, **3D Greedy Warehous
 
 ## 💡 Problem Statement
 
-Traditional university library management systems treat all resource requests with naive First-In-First-Out (FIFO) queues and static text tables. When a critical capstone hardware kit or rare algorithms textbook is checked out:
+Legacy campus circulation platforms treat all asset requests with naive First-In-First-Out (FIFO) queues and static text tables. When a critical capstone hardware kit or rare algorithms textbook is checked out:
 1. **Queue Starvation**: Senior students facing imminent project deadlines get stuck behind casual readers in simple FIFO queues.
 2. **Spatial Disorganization**: Warehouse staff lose hours searching for high-demand items scattered across low-accessibility shelves.
 3. **Keyword Search Failures**: Traditional keyword search fails when students search by conceptual intent (e.g. *"distributed consensus and fault tolerance"*) rather than exact book titles.
@@ -408,6 +407,6 @@ LIBRARIX/
   <h1><strong>Ankan Basu</strong></h1>
   <p><strong>B.Tech Computer Science & Engineering (CSE) Student at Lovely Professional University (LPU)</strong></p>
   <br />
-  <p><em>LIBRARIX (लाइब्रेरीक्स) — "Intelligent Circulation, 3D Spatial Slotting & Weighted Fair Reservation Queue Engine"</em></p>
+  <p><em>LIBRARIX (लाइब्रेरीक्स) — "Smart Resource Allocation & Weighted Fair Reservation Queue Engine"</em></p>
   <br />
 </div>

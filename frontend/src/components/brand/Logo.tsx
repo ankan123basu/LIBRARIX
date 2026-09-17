@@ -45,7 +45,7 @@ export default function Logo({
           <span className={`font-mono font-medium tracking-wide uppercase mt-0.5 ${current.tagline} ${
             variant === 'dark' ? 'text-[#FFE14D]' : 'text-[#0B0B0B]/80'
           }`}>
-            Intelligent Circulation
+            WFQ & RAG Resource Engine
           </span>
         )}
       </div>
