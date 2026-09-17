@@ -29,6 +29,12 @@ Traditional library software typically only manages simple book checkouts. **LIB
 
 ## 📑 Table of Contents
 
+- [Core Algorithms & Data Structures (DSA) Engine](#-core-algorithms--data-structures-dsa-engine)
+  - [1. Weighted Fair Reservation Queue Engine (`PriorityQueue` & Dynamic Aging Decay)](#1-weighted-fair-reservation-queue-engine-priorityqueue--dynamic-aging-decay)
+  - [2. 3D Spatial Shelf Layout Optimizer (Greedy Coordinate Allocation)](#2-3d-spatial-shelf-layout-optimizer-greedy-coordinate-allocation)
+  - [3. RAG Semantic Vector Search & Re-ranking ($L_2$ Vector Space)](#3-rag-semantic-vector-search--re-ranking-l2-vector-space)
+  - [4. LRU-K Cache Eviction Policy & Co-Borrow Graph Engine](#4-lru-k-cache-eviction-policy--co-borrow-graph-engine)
+  - [5. Dynamic Rule-Based Overdue Fine Engine](#5-dynamic-rule-based-overdue-fine-engine)
 - [Problem Statement](#-problem-statement)
 - [Key Differentiators](#-key-differentiators)
 - [Architecture Overview](#-architecture-overview)
@@ -37,11 +43,6 @@ Traditional library software typically only manages simple book checkouts. **LIB
   - [3D Spatial Shelf Slotting Flow](#3d-spatial-shelf-slotting-flow)
   - [RAG Semantic Vector Search Pipeline](#rag-semantic-vector-search-pipeline)
   - [STOMP Real-Time Alert Engine](#stomp-real-time-alert-engine)
-- [Core Algorithms & Engineering Core](#-core-algorithms--engineering-core)
-  - [1. Weighted Fair Reservation Queue Engine](#1-weighted-fair-reservation-queue-engine)
-  - [2. 3D Spatial Shelf Slotting Optimizer](#2-3d-spatial-shelf-slotting-optimizer)
-  - [3. RAG Vector Search & HuggingFace L2 Tokenizer](#3-rag-vector-search--huggingface-l2-tokenizer)
-  - [4. Rule-Based Fine & Exemption Waiver Engine](#4-rule-based-fine--exemption-waiver-engine)
 - [Quick Start](#-quick-start)
   - [Prerequisites](#prerequisites)
   - [1. Start Backend Service](#1-start-backend-service)
@@ -52,6 +53,69 @@ Traditional library software typically only manages simple book checkouts. **LIB
 - [Frontend & 3D WebGL Interface](#-frontend--3d-webgl-interface)
 - [Project Structure](#-project-structure)
 - [License & Authors](#-license--authors)
+
+---
+
+## 🧠 Core Algorithms & Data Structures (DSA) Engine
+
+### 1. Weighted Fair Reservation Queue Engine (`PriorityQueue` & Dynamic Aging Decay)
+* **Class**: [`WeightedFairQueueEngine.java`](file:///e:/LIBRARIX/backend/src/main/java/com/librarix/algorithm/WeightedFairQueueEngine.java)
+* **Data Structure**: `PriorityQueue` / Min-Max Heap (`reservation_queues` in MongoDB)
+* **Mathematical Formula**:
+  ```text
+  PriorityScore = (WaitHours × 1.5) + UrgencyBoost + (UserTierMultiplier × 10.0)
+  ```
+* **Algorithm & DSA Logic**:
+  * **Wait-Time Aging**: Adds `+1.5 pts/hour` continuously to boost long-waiting members and prevent queue starvation.
+  * **Urgency Boost**: `STANDARD (+10)`, `HIGH (+25)`, `CRITICAL (+50)` boost scores for upcoming exam or project deadlines.
+  * **Tier Multipliers**: `REGULAR (1.0x)`, `CAPSTONE (1.5x)`, `FACULTY (2.0x)`. Allocates critical hardware kits and textbooks to thesis teams fairly without stalling casual readers.
+
+---
+
+### 2. 3D Spatial Shelf Layout Optimizer (Greedy Coordinate Allocation)
+* **Class**: [`ShelfSlottingOptimizer.java`](file:///e:/LIBRARIX/backend/src/main/java/com/librarix/shelf/ShelfSlottingOptimizer.java)
+* **Data Structure**: 3D Spatial Coordinates $(X, Y, Z)$ + Category Graph Clustering
+* **Mathematical Formula**:
+  ```text
+  PopularityScore = (TotalLoans × 2.0) + (AvailableQuantity × 0.5)
+  ```
+* **Algorithm & DSA Logic**:
+  * Ranks all catalogue resources by popularity demand.
+  * Places top 30% highest demand assets at **Eye-Level height ($y = 1.5\text{m}$)** for optimal physical picking ergonomics.
+  * Groups co-borrowed items into affinity clusters along adjacent $X$-axis shelf positions.
+
+---
+
+### 3. RAG Semantic Vector Search & Re-ranking ($L_2$ Vector Space)
+* **Classes**: [`SemanticSearchService.java`](file:///e:/LIBRARIX/backend/src/main/java/com/librarix/ai/SemanticSearchService.java) & [`HuggingFaceL2Tokenizer.java`](file:///e:/LIBRARIX/backend/src/main/java/com/librarix/ai/HuggingFaceL2Tokenizer.java)
+* **Data Structure**: Dense $L_2$-Normalized Vector Space ($V \in \mathbb{R}^d$) & N-Gram Word Frequency Index
+* **Mathematical Formula**:
+  ```text
+  L2Distance = sqrt( sum( (Vector_Q[i] - Vector_D[i])^2 ) )
+  SimilarityScore = 1.0 / (1.0 + L2Distance)
+  ```
+* **Algorithm & DSA Logic**:
+  * Converts query text into $L_2$-normalized vector space representations.
+  * Calculates Euclidean distance similarity scores against resource titles, descriptions, authors, and tags.
+  * Filters results with similarity scores $> 0.45$ and returns them ranked by conceptual relevance (e.g. matching *"distributed consensus"* to *"Designing Data-Intensive Applications"*).
+
+---
+
+### 4. LRU-K Cache Eviction Policy & Co-Borrow Graph Engine
+* **Classes**: [`LruKCacheService.java`](file:///e:/LIBRARIX/backend/src/main/java/com/librarix/cache/LruKCacheService.java) & [`CoBorrowGraphService.java`](file:///e:/LIBRARIX/backend/src/main/java/com/librarix/graph/CoBorrowGraphService.java)
+* **Data Structure**: Doubly Linked List + HashMap (`LRU-K`) & Graph Adjacency List ($G = (V, E)$)
+* **Algorithm & DSA Logic**:
+  * **LRU-K Eviction**: Tracks timestamp of $K$-th backward access to prevent cache pollution from one-off book searches.
+  * **Co-Borrow Graph**: Maintains undirected weighted edges between items frequently checked out in the same borrowing session.
+
+---
+
+### 5. Dynamic Rule-Based Overdue Fine Engine
+* **Class**: [`FineCalculationService.java`](file:///e:/LIBRARIX/backend/src/main/java/com/librarix/service/FineCalculationService.java)
+* **Data Structure**: Time-Delta Window & Policy Rule Evaluation Map
+* **Algorithm & DSA Logic**:
+  * Computes daily overdue penalties: `$0.50/day` for Books vs `$2.00/day` for Hardware Kits and Lab Equipment.
+  * Evaluates 24-hour grace periods, fine caps ($50), and automatic capstone project exemptions before recording fines.
 
 ---
 
@@ -239,47 +303,6 @@ sequenceDiagram
     Broker->>Waitlisted: PUSH STOMP MESSAGE: "Resource Available for Pickup!"
     Waitlisted->>UI: Trigger Live Neobrutalist Toast Alert
 ```
-
----
-
-## 🧠 Core Algorithms & Engineering Core
-
-### 1. Weighted Fair Reservation Queue Engine
-- **Class**: [`WeightedFairQueueEngine.java`](file:///e:/LIBRARIX/backend/src/main/java/com/librarix/algorithm/WeightedFairQueueEngine.java)
-- **Formula**:
-  $$\text{PriorityScore} = (T_{\text{wait\_hours}} \times 1.5) + U_{\text{urgency\_boost}} + (W_{\text{tier}} \times 10.0)$$
-- **Logic**:
-  - **Wait-Time Aging**: Adds $1.5\text{ pts/hour}$ to continuously boost long-waiting members and prevent queue starvation.
-  - **Urgency Boost**: `STANDARD (+10)`, `HIGH (+25)`, `CRITICAL (+50)` boost scores for upcoming exam or project deadlines.
-  - **Tier Multipliers**: `REGULAR (1.0x)`, `CAPSTONE (1.5x)`, `FACULTY (2.0x)`.
-
----
-
-### 2. 3D Spatial Shelf Slotting Optimizer
-- **Class**: [`ShelfSlottingOptimizer.java`](file:///e:/LIBRARIX/backend/src/main/java/com/librarix/shelf/ShelfSlottingOptimizer.java)
-- **Formula**:
-  $$\text{PopularityScore} = (\text{TotalLoans} \times 2.0) + (\text{AvailableQuantity} \times 0.5)$$
-- **Logic**:
-  - Ranks all catalogue resources by popularity demand.
-  - Places top 30% highest demand assets at **Eye-Level height ($y = 1.5\text{m}$)** for optimal picking ergonomics.
-  - Groups co-borrowed items into affinity clusters along $X$-axis aisle coordinates.
-
----
-
-### 3. RAG Vector Search & HuggingFace L2 Tokenizer
-- **Classes**: [`SemanticSearchService.java`](file:///e:/LIBRARIX/backend/src/main/java/com/librarix/ai/SemanticSearchService.java) & [`HuggingFaceL2Tokenizer.java`](file:///e:/LIBRARIX/backend/src/main/java/com/librarix/ai/HuggingFaceL2Tokenizer.java)
-- **Logic**:
-  - Converts query text into L2-normalized vector space representations.
-  - Calculates Euclidean distance similarity scores against resource titles, descriptions, authors, and tags.
-  - Filters results with similarity scores $> 0.45$ and returns them ranked by conceptual relevance.
-
----
-
-### 4. Rule-Based Fine & Exemption Waiver Engine
-- **Class**: [`FineCalculationService.java`](file:///e:/LIBRARIX/backend/src/main/java/com/librarix/service/FineCalculationService.java)
-- **Logic**:
-  - Computes daily overdue penalties: `$0.50/day` for Books vs `$2.00/day` for Hardware Kits and Lab Equipment.
-  - Evaluates 24-hour grace periods and automatic capstone project exemptions before recording fines.
 
 ---
 
