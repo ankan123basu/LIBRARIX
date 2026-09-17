@@ -24,9 +24,9 @@
 **LIBRARIX (लाइब्रेरीक्स)** is an **algorithmic campus book circulation platform** designed specifically for university textbook management, academic literature, and research monographs.
 
 Unlike traditional, basic library management systems that rely on naive FIFO queues and static catalogs, **LIBRARIX** is powered by advanced data structures and AI algorithms:
-- ⚡ **Weighted Fair Reservation Queue Engine**: Uses dynamic wait-time aging ($T_{\text{wait\_hours}} \times 1.5$) and academic urgency multipliers to guarantee zero queue starvation for senior capstone students and research faculty.
-- 📐 **3D Spatial Shelf Layout Optimizer**: Implements greedy 3D coordinate allocation and spectral co-borrowing graph clustering to slot high-demand textbooks at ergonomic eye-level heights ($y = 1.5\text{m}$).
-- 🔍 **RAG Vector Search & AI Assistant**: Uses HuggingFace $L_2$ vector space embeddings and LLM grounding to enable natural language search by concepts, topics, and semantics instead of rigid keyword matching.
+- ⚡ **Weighted Fair Reservation Queue Engine**: Uses dynamic wait-time aging `(WaitHours × 1.5)` and academic urgency multipliers to guarantee zero queue starvation for senior capstone students and research faculty.
+- 📐 **3D Spatial Shelf Layout Optimizer**: Implements greedy 3D coordinate allocation and spectral co-borrowing graph clustering to slot high-demand textbooks at ergonomic eye-level heights `(y = 1.5m)`.
+- 🔍 **RAG Vector Search & AI Assistant**: Uses HuggingFace L2 vector space embeddings and LLM grounding to enable natural language search by concepts, topics, and semantics instead of rigid keyword matching.
 - 📡 **STOMP WebSocket Alert Broadcasts**: Pushes real-time notification toasts to student devices the instant a reserved textbook is returned.
 - 🛡️ **Rule-Based Fine & Waiver Engine**: Automated per-category daily rates, 24-hour grace periods, fine caps, and administrative waiver request workflows.
 
@@ -79,37 +79,37 @@ Unlike traditional, basic library management systems that rely on naive FIFO que
 
 ### 2. 3D Spatial Shelf Layout Optimizer (Greedy Coordinate Allocation)
 * **Class**: [`ShelfSlottingOptimizer.java`](file:///e:/LIBRARIX/backend/src/main/java/com/librarix/shelf/ShelfSlottingOptimizer.java)
-* **Data Structure**: 3D Spatial Coordinates $(X, Y, Z)$ + Category Graph Clustering
+* **Data Structure**: 3D Spatial Coordinates `(X, Y, Z)` + Category Graph Clustering
 * **Mathematical Formula**:
   ```text
   PopularityScore = (TotalLoans × 2.0) + (AvailableQuantity × 0.5)
   ```
 * **Algorithm & DSA Logic**:
   * Ranks all catalog books by borrowing popularity demand calculated from live loan repository data.
-  * Places top 30% highest demand books at **Eye-Level height ($y = 1.5\text{m}$)** for optimal physical picking ergonomics.
-  * Groups co-borrowed book titles into affinity clusters along adjacent $X$-axis shelf positions.
+  * Places top 30% highest demand books at **Eye-Level height `(y = 1.5m)`** for optimal physical picking ergonomics.
+  * Groups co-borrowed book titles into affinity clusters along adjacent X-axis shelf positions.
 
 ---
 
-### 3. Semantic Vector Search Engine ($L_2$ Euclidean Vector Space) & RAG AI Assistant
+### 3. Semantic Vector Search Engine (L2 Euclidean Vector Space) & RAG AI Assistant
 * **Classes**: [`SemanticSearchService.java`](file:///e:/LIBRARIX/backend/src/main/java/com/librarix/ai/SemanticSearchService.java), [`HuggingFaceL2Tokenizer.java`](file:///e:/LIBRARIX/backend/src/main/java/com/librarix/ai/HuggingFaceL2Tokenizer.java) & [`LibrarianAssistantService.java`](file:///e:/LIBRARIX/backend/src/main/java/com/librarix/ai/LibrarianAssistantService.java)
-* **Data Structure**: Dense $L_2$-Normalized Unit Vector Space ($V \in \mathbb{R}^d$) & Term Frequency Map
+* **Data Structure**: Dense L2-Normalized Unit Vector Space `(V ∈ ℝᵈ)` & Term Frequency Map
 * **Mathematical Formula**:
   ```text
   L2Distance = sqrt( sum( (Vector_Q[i] - Vector_D[i])^2 ) )
   SimilarityScore = 1.0 / (1.0 + L2Distance)
   ```
 * **Algorithm & DSA Logic**:
-  * **Semantic Vector Retrieval**: Converts query string into $L_2$-normalized unit vectors and scores document text using Euclidean distance similarity. Filters results with score $> 0.45$.
-  * **RAG Pipeline (`LibrarianAssistantService`)**: Feeds top-$K$ retrieved vector documents as grounded context into `LlmProvider` (Groq LLaMA-3 / Google Gemini REST API) to generate natural language librarian responses.
+  * **Semantic Vector Retrieval**: Converts query string into L2-normalized unit vectors and scores document text using Euclidean distance similarity. Filters results with score `> 0.45`.
+  * **RAG Pipeline (`LibrarianAssistantService`)**: Feeds top-K retrieved vector documents as grounded context into `LlmProvider` (Groq LLaMA-3 / Google Gemini REST API) to generate natural language librarian responses.
 
 ---
 
 ### 4. LRU-K Cache Eviction Policy & Co-Borrow Graph Engine
 * **Classes**: [`LruKCacheService.java`](file:///e:/LIBRARIX/backend/src/main/java/com/librarix/cache/LruKCacheService.java) & [`CoBorrowGraphService.java`](file:///e:/LIBRARIX/backend/src/main/java/com/librarix/graph/CoBorrowGraphService.java)
-* **Data Structure**: Doubly Linked List + HashMap (`LRU-K`) & Graph Adjacency List ($G = (V, E)$)
+* **Data Structure**: Doubly Linked List + HashMap (`LRU-K`) & Graph Adjacency List `(G = (V, E))`
 * **Algorithm & DSA Logic**:
-  * **LRU-K Eviction**: Active in `ResourceService.java` (`getResourceById`, `updateResource`, `deleteResource`). Tracks timestamp of $K$-th backward access to prevent cache pollution from one-off book searches.
+  * **LRU-K Eviction**: Active in `ResourceService.java` (`getResourceById`, `updateResource`, `deleteResource`). Tracks timestamp of K-th backward access to prevent cache pollution from one-off book searches.
   * **Co-Borrow Graph**: Active in `ShelfController.java` (`get3DShelfLayout`, `reoptimizeShelfLayout`). Computes affinity clusters from co-borrowing loan history to position co-borrowed books side by side on shelves.
 
 ---
@@ -139,9 +139,9 @@ Traditional university library management systems treat all book reservation req
 
 | Feature | LIBRARIX Platform | Legacy Library Systems |
 |---|---|---|
-| **Waitlist Queue Engine** | **Weighted Fair Reservation Queueing Engine** with continuous wait-time aging decay, urgency score boosts (+10, +25, +50), and user tier multipliers (Regular $1.0\times$, Capstone $1.5\times$, Faculty $2.0\times$) | Naive First-In-First-Out (FIFO) queue with zero priority awareness |
-| **Spatial Inventory Layout** | **3D Spatial Shelf Slotting Optimizer** placing top 30% high-demand books at Eye-Level height ($y = 1.5\text{m}$) with category clustering | Static 2D text lists with random shelf placement |
-| **Search & AI Intelligence** | **Semantic Vector Search & RAG AI Assistant** using $L_2$ Euclidean vector distance + Groq/Gemini LLM context grounding | Strict literal SQL substring matching (`LIKE %term%`) |
+| **Waitlist Queue Engine** | **Weighted Fair Reservation Queueing Engine** with continuous wait-time aging decay, urgency score boosts (+10, +25, +50), and user tier multipliers (Regular 1.0x, Capstone 1.5x, Faculty 2.0x) | Naive First-In-First-Out (FIFO) queue with zero priority awareness |
+| **Spatial Inventory Layout** | **3D Spatial Shelf Slotting Optimizer** placing top 30% high-demand books at Eye-Level height `(y = 1.5m)` with category clustering | Static 2D text lists with random shelf placement |
+| **Search & AI Intelligence** | **Semantic Vector Search & RAG AI Assistant** using L2 Euclidean vector distance + Groq/Gemini LLM context grounding | Strict literal SQL substring matching (`LIKE %term%`) |
 | **Caching & Graph Engine** | **LRU-K Cache & Co-Borrow Graph Engine** for $O(1)$ fast catalog retrieval and co-borrow affinity shelf clustering | No application-level caching or graph clustering |
 | **Real-Time Push Alerts** | **STOMP WebSocket Engine** pushing instant toast notifications on book check-in to specific user topics (`/topic/user/{userId}`) | Delayed batch email notifications |
 | **Overdue Fine Governance** | **Rule-Based Fine & Waiver Engine** with daily book rates ($2.00/day), 24h grace period, $50 caps, and administrative waiver workflows | Fixed flat penalties with zero waiver workflows |
