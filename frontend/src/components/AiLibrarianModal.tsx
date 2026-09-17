@@ -18,7 +18,7 @@ export default function AiLibrarianModal() {
   const [messages, setMessages] = useState<Message[]>([
     {
       sender: 'assistant',
-      text: 'Hello! I am your AI Campus Librarian. Ask me anything about course textbooks, waitlist priorities, circulation rules, or recommendations!',
+      text: 'Hello! I am LIBRA-AI (LIBRARIX Intelligent Librarian), created by Ankan Basu. Ask me anything about course textbooks, available/borrowed inventory, waitlist priorities, fine rules, or recommendations!',
     },
   ]);
 
@@ -79,14 +79,14 @@ export default function AiLibrarianModal() {
                 <div>
                   <div className="flex items-center gap-2">
                     <h3 className="font-display text-xl font-black text-ink uppercase">
-                      AI CAMPUS LIBRARIAN
+                      LIBRA-AI ASSISTANT
                     </h3>
                     <Sticker color="mint" rotate="-2deg">
-                      LIVE RAG
+                      ANKAN BASU ENGINE
                     </Sticker>
                   </div>
                   <p className="font-mono text-xs text-ink/80">
-                    Context-grounded assistant for textbooks, queue scores & policy rules
+                    Engineered by Ankan Basu • Context-grounded catalog & circulation rules
                   </p>
                 </div>
               </div>

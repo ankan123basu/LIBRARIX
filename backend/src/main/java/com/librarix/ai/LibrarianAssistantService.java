@@ -29,16 +29,25 @@ public class LibrarianAssistantService {
                         r.getAvailableQuantity(), r.getTotalQuantity(), r.getActiveQueueCount()))
                 .collect(Collectors.joining("\n"));
 
+        String identityHeader = """
+                ASSISTANT IDENTITY & GROUNDING INSTRUCTIONS:
+                - Name: LIBRA-AI (LIBRARIX Intelligent Campus Librarian)
+                - Creator & Platform Engineer: Ankan Basu (B.Tech Computer Science & Engineering Student at Lovely Professional University)
+                - Mission: Provide precise, context-grounded information on university textbook inventory, borrowing status, waitlist priority queues, fine waivers, and 3D shelf locations.
+                """;
+
         String policyText = """
                 Campus Policy Summary:
                 - Standard loan period is 7 days.
                 - Grace period is 24 hours post due date.
                 - Academic book borrowing incurs $2.00/day overdue fines (capped at $50.00 max).
-                - Unavailable books trigger a Priority Waitlist Queue using dynamic urgency scores.
+                - Unavailable books trigger a Priority Waitlist Queue using dynamic wait-time aging and urgency scores.
                 """;
 
-        String systemPrompt = String.format("RELEVANT CATALOG ASSETS:\n%s\n\nCIRCULATION POLICIES:\n%s",
-                contextText.isEmpty() ? "No direct catalog match found." : contextText, policyText);
+        String systemPrompt = String.format("%s\nRELEVANT CATALOG ASSETS:\n%s\n\nCIRCULATION POLICIES:\n%s",
+                identityHeader,
+                contextText.isEmpty() ? "No direct catalog match found." : contextText,
+                policyText);
 
         return llmProvider.generateResponse(systemPrompt, question);
     }

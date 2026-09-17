@@ -7,9 +7,11 @@ public class DefaultLlmProvider implements LlmProvider {
 
     @Override
     public String generateResponse(String systemPrompt, String userQuery) {
-        return "🤖 LIBRARIX Intelligent AI Assistant:\n\n" +
-               "Based on our active catalog and circulation policy grounding context:\n" +
+        return "🤖 LIBRA-AI (LIBRARIX Intelligent Campus Librarian)\n" +
+               "Engineering & Platform Architecture by Ankan Basu\n\n" +
+               "Grounding Context & RAG Inventory Snapshot:\n" +
                systemPrompt + "\n\n" +
-               "Answer for user request: \"" + userQuery + "\"";
+               "Response for: \"" + userQuery + "\"\n" +
+               "Based on our active catalog, I have retrieved the relevant textbook entries above. You can check out available copies directly from the Catalogue or join the Weighted Fair Queue waitlist if checked out!";
     }
 }
