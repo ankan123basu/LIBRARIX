@@ -1,8 +1,8 @@
 <div align="center">
   <img src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=300&q=80" alt="LIBRARIX Emblem" width="130" style="border-radius: 24px; border: 3px solid #0B0B0B; box-shadow: 6px 6px 0px #0B0B0B;" />
   <h1>LIBRARIX (लाइब्रेरीक्स)</h1>
-  <p><strong><em>"Next-Generation Campus Library & Smart Book Management Platform"</em></strong></p>
-  <p><em>Full-Stack Book Circulation System for Academic Textbooks, Research Volumes, Monographs, and Technical Literature</em></p>
+  <p><strong><em>"Algorithmic Book Circulation Engine, 3D Spatial Slotting & Anti-Starvation Reservation Platform"</em></strong></p>
+  <p><em>Enterprise-Grade Full-Stack Textbook Circulation Platform Powered by Weighted Fair Queues, RAG Vector Search, Spectral Co-Borrow Graphs & Real-Time STOMP WebSockets</em></p>
 </div>
 
 <div align="center">
@@ -21,9 +21,14 @@
 
 ---
 
-**LIBRARIX (लाइब्रेरीक्स)** is a modern, full-stack campus library management system built exclusively for university book collections and academic literature.
+**LIBRARIX (लाइब्रेरीक्स)** is an **algorithmic campus book circulation platform** designed specifically for university textbook management, academic literature, and research monographs.
 
-Traditional library software typically only manages simple book checkouts. **LIBRARIX** goes further by providing a complete platform for academic book collections — engineering textbooks, research volumes, CS classics, monographs, and literature. It introduces **Weighted Fair Reservation Queues** (allocating high-demand textbooks to senior capstone students & research faculty fairly), **AI Semantic Vector Search** (finding books by topic or concept rather than exact title keywords), an **Interactive 3D Shelf Visualizer**, **Automated Dynamic Fine Calculation**, and **Real-Time STOMP WebSocket Notifications** when reserved books become available.
+Unlike traditional, basic library management systems that rely on naive FIFO queues and static catalogs, **LIBRARIX** is powered by advanced data structures and AI algorithms:
+- ⚡ **Weighted Fair Reservation Queue Engine**: Uses dynamic wait-time aging ($T_{\text{wait\_hours}} \times 1.5$) and academic urgency multipliers to guarantee zero queue starvation for senior capstone students and research faculty.
+- 📐 **3D Spatial Shelf Layout Optimizer**: Implements greedy 3D coordinate allocation and spectral co-borrowing graph clustering to slot high-demand textbooks at ergonomic eye-level heights ($y = 1.5\text{m}$).
+- 🔍 **RAG Vector Search & AI Assistant**: Uses HuggingFace $L_2$ vector space embeddings and LLM grounding to enable natural language search by concepts, topics, and semantics instead of rigid keyword matching.
+- 📡 **STOMP WebSocket Alert Broadcasts**: Pushes real-time notification toasts to student devices the instant a reserved textbook is returned.
+- 🛡️ **Rule-Based Fine & Waiver Engine**: Automated per-category daily rates, 24-hour grace periods, fine caps, and administrative waiver request workflows.
 
 ---
 

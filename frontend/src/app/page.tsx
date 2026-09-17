@@ -47,14 +47,14 @@ export default function Home() {
               </div>
 
               <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-black text-ink leading-[0.95] tracking-tight">
-                SMART CAMPUS RESOURCE MANAGEMENT &{' '}
+                ALGORITHMIC BOOK CIRCULATION &{' '}
                 <span className="border-3 border-ink bg-highlight shadow-brutal px-3 py-1 inline-block my-2">
-                  PRIORITY WAITLIST QUEUE
+                  WEIGHTED FAIR QUEUE ENGINE
                 </span>
               </h1>
 
               <p className="font-body text-base sm:text-lg text-ink leading-relaxed">
-                LIBRARIX is an enterprise-grade campus textbook circulation system—powered by a Weighted Fair Reservation Queue Engine, 3D Spatial Shelf Placement, AI Semantic Search, and real-time STOMP WebSocket notifications for academic books.
+                LIBRARIX is an advanced algorithmic textbook circulation platform—powered by anti-starvation Weighted Fair Reservation Queues, 3D Spatial Shelf Slotting, RAG AI Vector Search, and real-time STOMP WebSockets for academic book collections.
               </p>
 
               <div className="flex flex-wrap items-center gap-4 pt-2">
