@@ -51,7 +51,7 @@ export default function DrawerFilter({
               01. Resource Category
             </span>
             <div className="grid grid-cols-2 gap-2">
-              {['ALL', 'BOOK', 'HARDWARE', 'LAB_KIT', 'SEMINAR_ROOM'].map((type) => (
+              {['ALL', 'BOOK'].map((type) => (
                 <button
                   key={type}
                   onClick={() => onSelectType(type === 'ALL' ? '' : type)}
@@ -61,7 +61,7 @@ export default function DrawerFilter({
                       : 'bg-paper-2 hover:bg-sky'
                   }`}
                 >
-                  {type.replace('_', ' ')}
+                  {type === 'ALL' ? 'ALL BOOKS' : 'BOOKS'}
                 </button>
               ))}
             </div>

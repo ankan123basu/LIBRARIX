@@ -1,8 +1,8 @@
 <div align="center">
   <img src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=300&q=80" alt="LIBRARIX Emblem" width="130" style="border-radius: 24px; border: 3px solid #0B0B0B; box-shadow: 6px 6px 0px #0B0B0B;" />
   <h1>LIBRARIX (लाइब्रेरीक्स)</h1>
-  <p><strong><em>"Next-Generation Campus Library & Smart Resource Management Platform"</em></strong></p>
-  <p><em>Full-Stack Circulation System for Academic Textbooks, Lab Hardware Kits, Oscilloscopes, Media Equipment, and Study Rooms</em></p>
+  <p><strong><em>"Next-Generation Campus Library & Smart Book Management Platform"</em></strong></p>
+  <p><em>Full-Stack Book Circulation System for Academic Textbooks, Research Volumes, Monographs, and Technical Literature</em></p>
 </div>
 
 <div align="center">
@@ -21,9 +21,9 @@
 
 ---
 
-**LIBRARIX (लाइब्रेरीक्स)** is a modern, full-stack campus library management system built for universities and educational institutions.
+**LIBRARIX (लाइब्रेरीक्स)** is a modern, full-stack campus library management system built exclusively for university book collections and academic literature.
 
-Traditional library software typically only manages simple book checkouts. **LIBRARIX** goes further by providing a complete platform for academic assets — textbooks, lab hardware kits, oscilloscopes, media equipment, and seminar study rooms. It introduces **Weighted Fair Reservation Queues** (allocating urgent resources to senior capstone teams & research faculty fairly), **AI Semantic Vector Search** (finding resources by topic or concept rather than exact title keywords), an **Interactive 3D Shelf Visualizer**, **Automated Dynamic Fine Calculation**, and **Real-Time STOMP WebSocket Notifications** when reserved items become available.
+Traditional library software typically only manages simple book checkouts. **LIBRARIX** goes further by providing a complete platform for academic book collections — engineering textbooks, research volumes, CS classics, monographs, and literature. It introduces **Weighted Fair Reservation Queues** (allocating high-demand textbooks to senior capstone students & research faculty fairly), **AI Semantic Vector Search** (finding books by topic or concept rather than exact title keywords), an **Interactive 3D Shelf Visualizer**, **Automated Dynamic Fine Calculation**, and **Real-Time STOMP WebSocket Notifications** when reserved books become available.
 
 ---
 
@@ -67,8 +67,8 @@ Traditional library software typically only manages simple book checkouts. **LIB
   ```
 * **Algorithm & DSA Logic**:
   * **Wait-Time Aging**: Adds `+1.5 pts/hour` continuously to boost long-waiting members and prevent queue starvation.
-  * **Urgency Boost**: `STANDARD (+10)`, `HIGH (+25)`, `CRITICAL (+50)` boost scores for upcoming exam or project deadlines.
-  * **Tier Multipliers**: `REGULAR (1.0x)`, `CAPSTONE (1.5x)`, `FACULTY (2.0x)`. Allocates critical hardware kits and textbooks to thesis teams fairly without stalling casual readers.
+  * **Urgency Boost**: `STANDARD (+10)`, `HIGH (+25)`, `CRITICAL (+50)` boost scores for upcoming exam or thesis deadlines.
+  * **Tier Multipliers**: `REGULAR (1.0x)`, `CAPSTONE (1.5x)`, `FACULTY (2.0x)`. Allocates high-demand textbooks to senior project teams fairly without stalling casual readers.
 
 ---
 
@@ -80,9 +80,9 @@ Traditional library software typically only manages simple book checkouts. **LIB
   PopularityScore = (TotalLoans × 2.0) + (AvailableQuantity × 0.5)
   ```
 * **Algorithm & DSA Logic**:
-  * Ranks all catalogue resources by popularity demand.
-  * Places top 30% highest demand assets at **Eye-Level height ($y = 1.5\text{m}$)** for optimal physical picking ergonomics.
-  * Groups co-borrowed items into affinity clusters along adjacent $X$-axis shelf positions.
+  * Ranks all catalog books by borrowing popularity demand.
+  * Places top 30% highest demand books at **Eye-Level height ($y = 1.5\text{m}$)** for optimal physical picking ergonomics.
+  * Groups co-borrowed book titles into affinity clusters along adjacent $X$-axis shelf positions.
 
 ---
 
@@ -96,7 +96,7 @@ Traditional library software typically only manages simple book checkouts. **LIB
   ```
 * **Algorithm & DSA Logic**:
   * Converts query text into $L_2$-normalized vector space representations.
-  * Calculates Euclidean distance similarity scores against resource titles, descriptions, authors, and tags.
+  * Calculates Euclidean distance similarity scores against book titles, descriptions, authors, and tags.
   * Filters results with similarity scores $> 0.45$ and returns them ranked by conceptual relevance (e.g. matching *"distributed consensus"* to *"Designing Data-Intensive Applications"*).
 
 ---
@@ -106,7 +106,7 @@ Traditional library software typically only manages simple book checkouts. **LIB
 * **Data Structure**: Doubly Linked List + HashMap (`LRU-K`) & Graph Adjacency List ($G = (V, E)$)
 * **Algorithm & DSA Logic**:
   * **LRU-K Eviction**: Tracks timestamp of $K$-th backward access to prevent cache pollution from one-off book searches.
-  * **Co-Borrow Graph**: Maintains undirected weighted edges between items frequently checked out in the same borrowing session.
+  * **Co-Borrow Graph**: Maintains undirected weighted edges between book titles frequently checked out together.
 
 ---
 
@@ -114,17 +114,17 @@ Traditional library software typically only manages simple book checkouts. **LIB
 * **Class**: [`FineCalculationService.java`](file:///e:/LIBRARIX/backend/src/main/java/com/librarix/service/FineCalculationService.java)
 * **Data Structure**: Time-Delta Window & Policy Rule Evaluation Map
 * **Algorithm & DSA Logic**:
-  * Computes daily overdue penalties: `$0.50/day` for Books vs `$2.00/day` for Hardware Kits and Lab Equipment.
+  * Computes daily overdue penalties: `$0.50/day` for standard books vs `$1.00/day` for rare reference volumes.
   * Evaluates 24-hour grace periods, fine caps ($50), and automatic capstone project exemptions before recording fines.
 
 ---
 
 ## 💡 Problem Statement
 
-Traditional university library management systems treat all resource requests with basic First-In-First-Out (FIFO) queues and static text tables. When high-demand hardware kits or essential textbooks are checked out:
-1. **Queue Starvation**: Senior capstone students facing imminent project deadlines get stuck behind casual readers in simple FIFO queues.
+Traditional university library management systems treat all book reservation requests with basic First-In-First-Out (FIFO) queues and static text tables. When high-demand textbooks are checked out:
+1. **Queue Starvation**: Senior capstone students facing imminent thesis deadlines get stuck behind casual readers in simple FIFO queues.
 2. **Keyword Search Failures**: Traditional keyword search fails when students search by conceptual intent (e.g. *"distributed consensus and fault tolerance"*) rather than exact book titles.
-3. **Delayed Notifications**: Students miss available pickup windows because notification emails arrive hours late.
+3. **Delayed Notifications**: Students miss available book pickup windows because notification emails arrive hours late.
 4. **Rigid Penalties**: Fixed flat penalties penalize students without accounting for grace periods or project deadline waivers.
 
 **LIBRARIX** solves this by uniting real-time algorithmic priority waitlists, semantic vector search, interactive 3D shelf visualization, automated dynamic fines, and instantaneous WebSocket push alerts into a Neobrutalist web platform.
@@ -136,13 +136,13 @@ Traditional university library management systems treat all resource requests wi
 | Feature | LIBRARIX Platform | Legacy Library Systems |
 |---|---|---|
 | **Waitlist Queue Engine** | **Weighted Fair Reservation Queueing Engine** with continuous wait-time aging decay, urgency score boosts (+10, +25, +50), and user tier multipliers (Regular $1.0\times$, Capstone $1.5\times$, Faculty $2.0\times$) | Naive First-In-First-Out (FIFO) queue with zero priority awareness |
-| **Spatial Inventory Layout** | **3D Spatial Shelf Slotting Optimizer** placing top 30% high-demand items at Eye-Level height ($y = 1.5\text{m}$) with category clustering | Static 2D text lists with random shelf placement |
+| **Spatial Inventory Layout** | **3D Spatial Shelf Slotting Optimizer** placing top 30% high-demand books at Eye-Level height ($y = 1.5\text{m}$) with category clustering | Static 2D text lists with random shelf placement |
 | **Search Intelligence** | **RAG Vector Search Engine** using HuggingFace L2 Euclidean distance tokenizer for semantic intent matching | Strict literal SQL substring matching (`LIKE %term%`) |
-| **Real-Time Push Alerts** | **STOMP WebSocket Engine** pushing instant toast notifications on check-in to specific user topics (`/topic/user/{userId}`) | Delayed batch email notifications |
-| **Overdue Fine Governance** | **Rule-Based Fine & Waiver Engine** with daily category rates ($0.50/day vs $2.00/day), 24h grace period, $50 caps, and Capstone exemption waivers | Fixed flat penalties with zero waiver workflows |
+| **Real-Time Push Alerts** | **STOMP WebSocket Engine** pushing instant toast notifications on book check-in to specific user topics (`/topic/user/{userId}`) | Delayed batch email notifications |
+| **Overdue Fine Governance** | **Rule-Based Fine & Waiver Engine** with daily book rates ($0.50/day), 24h grace period, $50 caps, and Capstone exemption waivers | Fixed flat penalties with zero waiver workflows |
 | **Interactive 3D Layer** | **Three.js & React Three Fiber (R3F)** interactive 3D shelf hall corridor with non-overlapping raycasting | Plain static HTML table grids |
 | **Unauthenticated Browsing** | **Public Guest Access Mode** with inline checkout warnings and direct registration flows | Strict sign-in wall blocking public inventory visibility |
-| **Dataset Scale** | **60 Pre-seeded Technical Dataset Items** auto-initialized in MongoDB on server startup | Empty placeholder database schemas |
+| **Dataset Scale** | **60 Pre-seeded Technical Book Items** auto-initialized in MongoDB on server startup | Empty placeholder database schemas |
 
 ---
 

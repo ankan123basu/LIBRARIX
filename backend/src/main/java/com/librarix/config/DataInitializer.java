@@ -79,20 +79,20 @@ public class DataInitializer implements CommandLineRunner {
                 "https://covers.openlibrary.org/b/isbn/9781617292545-L.jpg", ResourceType.BOOK, 3, 1, "SHELF-A3",
                 List.of("java", "spring-boot", "backend"), ResourceStatus.AVAILABLE);
 
-        seedResourceIfMissing("res-104", "621.381 OSC", "Rigol DS1054Z 50MHz Digital Storage Oscilloscope", "Rigol Technologies",
-                "4-channel digital oscilloscope with 1GSa/s sampling rate, 12Mpts memory depth, and SPI/I2C protocol decoder module.",
-                "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=600&q=80", ResourceType.HARDWARE, 2, 2, "LAB-ROOM-204",
-                List.of("hardware", "electronics", "oscilloscope"), ResourceStatus.AVAILABLE);
+        seedResourceIfMissing("res-104", "005.430 OS1", "Operating System Concepts (10th Ed)", "Abraham Silberschatz & Peter B. Galvin",
+                "Process synchronization, virtual memory management, file systems, I/O subsystems, and kernel architecture.",
+                "https://covers.openlibrary.org/b/isbn/9781118063330-L.jpg", ResourceType.BOOK, 5, 3, "SHELF-A4",
+                List.of("operating-systems", "kernel", "cs-core"), ResourceStatus.AVAILABLE);
 
-        seedResourceIfMissing("res-105", "621.395 FPGA", "Xilinx Artix-7 FPGA Nexys A7 Trainer Kit", "Digilent / Xilinx",
-                "FPGA development board with 101,440 logic cells, 240 DSP slices, 15.8 Mb BRAM, PMOD expanders, and VGA output.",
-                "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=600&q=80", ResourceType.LAB_KIT, 3, 0, "LAB-ROOM-204",
-                List.of("lab-kit", "fpga", "verilog"), ResourceStatus.BORROWED);
+        seedResourceIfMissing("res-105", "005.133 SICP", "Structure and Interpretation of Computer Programs", "Harold Abelson & Gerald Jay Sussman",
+                "Lisp, functional programming, data abstraction, metalinguistic abstraction, and register machine execution.",
+                "https://covers.openlibrary.org/b/isbn/9780262510875-L.jpg", ResourceType.BOOK, 4, 1, "SHELF-A5",
+                List.of("programming-theory", "lisp", "cs-classic"), ResourceStatus.BORROWED);
 
-        seedResourceIfMissing("res-106", "371.330 SEM", "Capstone Seminar Room 402B (8-Person Capacity)", "Campus Library Facilities",
-                "Acoustically dampened seminar room equipped with 4K interactive touchscreen display, dual whiteboards, and HDMI presentation hub.",
-                "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=600&q=80", ResourceType.SEMINAR_ROOM, 1, 1, "FLOOR-4",
-                List.of("seminar-room", "collaboration", "study"), ResourceStatus.AVAILABLE);
+        seedResourceIfMissing("res-106", "005.740 DBC", "Database System Concepts (7th Ed)", "Silberschatz, Korth & Sudarshan",
+                "Relational algebra, SQL, query optimization, transaction processing, concurrency control, and index structures.",
+                "https://covers.openlibrary.org/b/isbn/9780078022159-L.jpg", ResourceType.BOOK, 6, 4, "SHELF-A6",
+                List.of("databases", "sql", "transactions"), ResourceStatus.AVAILABLE);
 
         seedResourceIfMissing("res-107", "005.117 CLN", "Clean Code: A Handbook of Agile Software Craftsmanship", "Robert C. Martin (Uncle Bob)",
                 "Principles, patterns, and practices of writing clean, readable, refactorable, and maintainable software code.",
@@ -124,64 +124,64 @@ public class DataInitializer implements CommandLineRunner {
                 "https://covers.openlibrary.org/b/isbn/9780262035613-L.jpg", ResourceType.BOOK, 4, 2, "SHELF-C3",
                 List.of("deep-learning", "neural-networks", "pytorch"), ResourceStatus.AVAILABLE);
 
-        seedResourceIfMissing("res-113", "621.398 RPI", "Raspberry Pi 5 (8GB) Edge Computing Starter Kit", "Raspberry Pi Foundation",
-                "Quad-core ARM Cortex-A76 board with active cooler, NVMe M.2 HAT, 64GB microSD, and camera module for IoT edge AI.",
-                "https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=600&q=80", ResourceType.HARDWARE, 4, 3, "LAB-ROOM-204",
-                List.of("hardware", "raspberry-pi", "iot", "edge-ai"), ResourceStatus.AVAILABLE);
+        seedResourceIfMissing("res-113", "621.398 RISCV", "Computer Organization & Design: RISC-V Edition", "David A. Patterson & John L. Hennessy",
+                "Hardware/software interface, RISC-V instruction set architecture, pipelined datapath design, and cache memory hierarchy.",
+                "https://covers.openlibrary.org/b/isbn/9780128122754-L.jpg", ResourceType.BOOK, 4, 3, "SHELF-C4",
+                List.of("architecture", "risc-v", "hardware-design"), ResourceStatus.AVAILABLE);
 
-        seedResourceIfMissing("res-114", "621.399 ARD", "Arduino Mega 2560 Sensor & Mechatronics Kit", "Arduino Official",
-                "ATmega2560 board with 54 digital I/O pins, 16 analog inputs, stepper motor drivers, ultrasonic sensors, and LCD shield.",
-                "https://images.unsplash.com/photo-1553406830-ef2513450d76?auto=format&fit=crop&w=600&q=80", ResourceType.LAB_KIT, 5, 4, "LAB-ROOM-204",
-                List.of("lab-kit", "arduino", "mechatronics"), ResourceStatus.AVAILABLE);
+        seedResourceIfMissing("res-114", "005.100 TAOCP", "The Art of Computer Programming (Vol 1-4)", "Donald E. Knuth",
+                "Fundamental algorithms, information structures, seminumerical algorithms, sorting, searching, and combinatorial algorithms.",
+                "https://covers.openlibrary.org/b/isbn/9780321751041-L.jpg", ResourceType.BOOK, 5, 4, "SHELF-C5",
+                List.of("algorithms", "knuth", "cs-classic"), ResourceStatus.AVAILABLE);
 
-        seedResourceIfMissing("res-115", "621.382 DMM", "Keysight 34461A 6½ Digit Precision Multimeter", "Keysight Technologies",
-                "Truevolt benchtop digital multimeter with 0.0035% DC accuracy, LAN/USB connectivity, and trend chart graphing display.",
-                "https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=600&q=80", ResourceType.HARDWARE, 2, 1, "LAB-ROOM-205",
-                List.of("hardware", "multimeter", "precision"), ResourceStatus.AVAILABLE);
+        seedResourceIfMissing("res-115", "005.453 DRG", "Compilers: Principles, Techniques & Tools (Dragon Book)", "Aho, Lam, Sethi & Ullman",
+                "Lexical analysis, LL/LR parsing, syntax-directed translation, intermediate code generation, and instruction-level optimization.",
+                "https://covers.openlibrary.org/b/isbn/9780321486813-L.jpg", ResourceType.BOOK, 5, 3, "SHELF-C6",
+                List.of("compilers", "parsing", "programming-languages"), ResourceStatus.AVAILABLE);
 
-        seedResourceIfMissing("res-116", "371.331 ROB", "Robotics Lab Project Pod 104 (12-Person Capacity)", "Campus Engineering Facilities",
-                "High-clearance robotics development bay equipped with overhead power drop cords, soldering station, 3D printer, and Ethernet drops.",
-                "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=600&q=80", ResourceType.SEMINAR_ROOM, 1, 1, "BUILDING-4",
-                List.of("seminar-room", "robotics", "workshop"), ResourceStatus.AVAILABLE);
+        seedResourceIfMissing("res-116", "004.360 DIS", "Distributed Systems: Principles and Paradigms", "Andrew S. Tanenbaum & Maarten Van Steen",
+                "Architectures, processes, communication, naming, synchronization, consistency models, fault tolerance, and security in distributed systems.",
+                "https://covers.openlibrary.org/b/isbn/9781543057386-L.jpg", ResourceType.BOOK, 6, 4, "SHELF-D1",
+                List.of("distributed-systems", "fault-tolerance", "consensus"), ResourceStatus.AVAILABLE);
 
         seedResourceIfMissing("res-117", "005.131 CSAPP", "Computer Systems: A Programmer's Perspective", "Randal E. Bryant & David R. O'Hallaron",
                 "Machine-level code execution, processor architecture, virtual memory, dynamic memory allocation, and concurrent programming.",
-                "https://covers.openlibrary.org/b/isbn/9780134092669-L.jpg", ResourceType.BOOK, 7, 5, "SHELF-D1",
+                "https://covers.openlibrary.org/b/isbn/9780134092669-L.jpg", ResourceType.BOOK, 7, 5, "SHELF-D2",
                 List.of("cs-systems", "c-programming", "memory"), ResourceStatus.AVAILABLE);
 
         seedResourceIfMissing("res-118", "006.312 PDS", "Python Data Science Handbook (2nd Ed)", "Jake VanderPlas",
                 "Essential tools for working with data in Python: IPython, NumPy, Pandas, Matplotlib, and Scikit-Learn pipelines.",
-                "https://covers.openlibrary.org/b/isbn/9781098115784-L.jpg", ResourceType.BOOK, 6, 4, "SHELF-D2",
+                "https://covers.openlibrary.org/b/isbn/9781098115784-L.jpg", ResourceType.BOOK, 6, 4, "SHELF-D3",
                 List.of("python", "data-science", "pandas"), ResourceStatus.AVAILABLE);
 
-        seedResourceIfMissing("res-119", "621.388 LOG", "Saleae Logic Pro 16 USB Logic Analyzer Kit", "Saleae Inc",
-                "16-channel high-speed logic analyzer with 500MS/s digital sampling, analog recording, and SPI/I2C/CAN bus decoding.",
-                "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=600&q=80", ResourceType.HARDWARE, 3, 2, "LAB-ROOM-205",
-                List.of("hardware", "logic-analyzer", "electronics"), ResourceStatus.AVAILABLE);
+        seedResourceIfMissing("res-119", "005.100 DAA", "Algorithms Unlocked (MIT Press)", "Thomas H. Cormen",
+                "Gentle introduction to computer algorithms: searching, sorting, graph algorithms, string processing, and basic cryptography.",
+                "https://covers.openlibrary.org/b/isbn/9780262518802-L.jpg", ResourceType.BOOK, 5, 3, "SHELF-D4",
+                List.of("algorithms", "intro-cs", "mit-press"), ResourceStatus.AVAILABLE);
 
-        seedResourceIfMissing("res-120", "006.800 VR", "Meta Quest 3 Spatial Computing & VR Dev Kit", "Meta Reality Labs",
-                "Mixed-reality spatial computing head-mounted display with dual RGB pass-through cameras, Snapdragon XR2 Gen 2, and Unity/Unreal SDKs.",
-                "https://images.unsplash.com/photo-1593508512255-86ab42a8e620?auto=format&fit=crop&w=600&q=80", ResourceType.LAB_KIT, 2, 1, "LAB-ROOM-301",
-                List.of("lab-kit", "vr", "spatial-computing", "unity"), ResourceStatus.AVAILABLE);
+        seedResourceIfMissing("res-120", "005.133 HASK", "Learn You a Haskell for Great Good!", "Miran Lipovača",
+                "Fun and accessible introduction to functional programming, purity, immutability, monads, functors, and typeclasses in Haskell.",
+                "https://covers.openlibrary.org/b/isbn/9781593272838-L.jpg", ResourceType.BOOK, 4, 2, "SHELF-D5",
+                List.of("haskell", "functional-programming", "types"), ResourceStatus.AVAILABLE);
 
-        seedResourceIfMissing("res-121", "005.430 OS", "Operating System Concepts (10th Edition)", "Abraham Silberschatz, Peter B. Galvin",
+        seedResourceIfMissing("res-121", "005.430 OS2", "Operating System Concepts (10th Edition)", "Abraham Silberschatz, Peter B. Galvin",
                 "Process synchronization, virtual memory management, file systems, I/O subsystems, virtual machines, and security protection.",
-                "https://covers.openlibrary.org/b/isbn/9781118063330-L.jpg", ResourceType.BOOK, 8, 4, "SHELF-D3",
+                "https://covers.openlibrary.org/b/isbn/9781118063330-L.jpg", ResourceType.BOOK, 8, 4, "SHELF-E1",
                 List.of("operating-systems", "kernel", "memory"), ResourceStatus.AVAILABLE);
 
-        seedResourceIfMissing("res-122", "005.453 CMP", "Compilers: Principles, Techniques, and Tools", "Alfred V. Aho, Monica S. Lam",
+        seedResourceIfMissing("res-122", "005.453 CMP2", "Compilers: Principles, Techniques, and Tools", "Alfred V. Aho, Monica S. Lam",
                 "Lexical analysis, syntax-directed translation, intermediate code generation, run-time environments, and code optimization.",
-                "https://covers.openlibrary.org/b/isbn/9780321486813-L.jpg", ResourceType.BOOK, 5, 3, "SHELF-E1",
+                "https://covers.openlibrary.org/b/isbn/9780321486813-L.jpg", ResourceType.BOOK, 5, 3, "SHELF-E2",
                 List.of("compilers", "parsing", "optimization"), ResourceStatus.AVAILABLE);
 
         seedResourceIfMissing("res-123", "005.740 SQL", "High Performance MySQL (4th Edition)", "Silvia Botros & Jeremy Tinley",
                 "Optimization, backups, replication, scaling, indexing, InnoDB engine internals, and query execution profiling.",
-                "https://covers.openlibrary.org/b/isbn/9781492080519-L.jpg", ResourceType.BOOK, 4, 2, "SHELF-E2",
+                "https://covers.openlibrary.org/b/isbn/9781492080519-L.jpg", ResourceType.BOOK, 4, 2, "SHELF-E3",
                 List.of("database", "mysql", "sql-tuning"), ResourceStatus.AVAILABLE);
 
         seedResourceIfMissing("res-124", "006.310 PRML", "Pattern Recognition and Machine Learning", "Christopher M. Bishop",
                 "Comprehensive introduction to Bayesian methods, linear classification, neural networks, kernel methods, and graphical models.",
-                "https://covers.openlibrary.org/b/isbn/9780387310732-L.jpg", ResourceType.BOOK, 6, 3, "SHELF-E3",
+                "https://covers.openlibrary.org/b/isbn/9780387310732-L.jpg", ResourceType.BOOK, 6, 3, "SHELF-E4",
                 List.of("machine-learning", "statistics", "bayesian"), ResourceStatus.AVAILABLE);
 
         seedResourceIfMissing("res-125", "005.133 CPP", "The C++ Programming Language (4th Edition)", "Bjarne Stroustrup",
@@ -262,77 +262,77 @@ public class DataInitializer implements CommandLineRunner {
         seedResourceIfMissing("res-140", "004.220 ARCH", "Computer Architecture: A Quantitative Approach (6th Ed)", "John L. Hennessy & David A. Patterson",
                 "Instruction-level parallelism, speculative execution, cache hierarchies, domain-specific accelerators, and GPU SIMD architectures.",
                 "https://covers.openlibrary.org/b/isbn/9780128119051-L.jpg", ResourceType.BOOK, 5, 3, "SHELF-K1",
-                List.of("computer-architecture", "hardware", "processors"), ResourceStatus.AVAILABLE);
+                List.of("computer-architecture", "hardware-theory", "processors"), ResourceStatus.AVAILABLE);
 
-        seedResourceIfMissing("res-141", "621.381 FUN", "Siglent SDG1032X 30MHz Function Generator", "Siglent Technologies",
-                "Dual-channel arbitrary waveform generator with 150MSa/s sampling rate, 14-bit vertical resolution, and sweep burst functions.",
-                "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=600&q=80", ResourceType.HARDWARE, 3, 2, "LAB-ROOM-205",
-                List.of("hardware", "signal-generator", "electronics"), ResourceStatus.AVAILABLE);
+        seedResourceIfMissing("res-141", "530.12 QUANT", "Principles of Quantum Mechanics (2nd Ed)", "R. Shankar",
+                "Mathematical foundations of quantum mechanics: vector spaces, Dirac notation, harmonic oscillator, spin, and perturbation theory.",
+                "https://covers.openlibrary.org/b/isbn/9780306447908-L.jpg", ResourceType.BOOK, 4, 3, "SHELF-K2",
+                List.of("quantum-mechanics", "physics", "mathematics"), ResourceStatus.AVAILABLE);
 
-        seedResourceIfMissing("res-142", "621.398 ESP", "ESP32-WROOM-32D Dual-Core Wi-Fi & Bluetooth IoT Kit", "Espressif Systems",
-                "Dual-core 240MHz microcontroller with integrated Wi-Fi, BLE, capacitive touch sensors, Hall sensors, and FreeRTOS support.",
-                "https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=600&q=80", ResourceType.LAB_KIT, 8, 6, "LAB-ROOM-204",
-                List.of("lab-kit", "esp32", "iot", "freertos"), ResourceStatus.AVAILABLE);
+        seedResourceIfMissing("res-142", "512.2 GROUPS", "Abstract Algebra (3rd Edition)", "David S. Dummit & Richard M. Foote",
+                "Group theory, ring theory, Galois theory, module theory, vector spaces, and commutative algebra.",
+                "https://covers.openlibrary.org/b/isbn/9780471433347-L.jpg", ResourceType.BOOK, 5, 4, "SHELF-K3",
+                List.of("abstract-algebra", "mathematics", "group-theory"), ResourceStatus.AVAILABLE);
 
-        seedResourceIfMissing("res-143", "621.399 STM", "STM32F407G-DISC1 ARM Cortex-M4 Discovery Kit", "STMicroelectronics",
-                "ARM Cortex-M4 168MHz MCU with FPU, ST-LINK/V2-1 debugger, MEMS motion sensor, digital microphone, and audio DAC.",
-                "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=600&q=80", ResourceType.LAB_KIT, 4, 3, "LAB-ROOM-204",
-                List.of("lab-kit", "stm32", "arm", "embedded"), ResourceStatus.AVAILABLE);
+        seedResourceIfMissing("res-143", "515.35 DEQ", "Differential Equations & Linear Algebra (4th Ed)", "C. Henry Edwards & David E. Penney",
+                "First-order equations, linear systems, eigenvalues, Laplace transforms, Fourier series, and boundary value problems.",
+                "https://covers.openlibrary.org/b/isbn/9780134491431-L.jpg", ResourceType.BOOK, 6, 4, "SHELF-K4",
+                List.of("differential-equations", "linear-algebra", "math"), ResourceStatus.AVAILABLE);
 
-        seedResourceIfMissing("res-144", "621.382 PWR", "Korad KA3005D Programmable DC Power Supply (30V 5A)", "Korad Technology",
-                "Precision regulated DC bench power supply with 10mV/1mA resolution, constant current/voltage modes, and OVP/OCP protection.",
-                "https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=600&q=80", ResourceType.HARDWARE, 4, 3, "LAB-ROOM-205",
-                List.of("hardware", "power-supply", "bench-equipment"), ResourceStatus.AVAILABLE);
+        seedResourceIfMissing("res-144", "519.5 PROB", "Probability & Random Processes for Electrical Engineering", "Alberto Leon-Garcia",
+                "Probability spaces, random variables, Markov chains, spectral density, stationary processes, and queueing theory.",
+                "https://covers.openlibrary.org/b/isbn/9780201500882-L.jpg", ResourceType.BOOK, 5, 3, "SHELF-K5",
+                List.of("probability", "stochastic", "math"), ResourceStatus.AVAILABLE);
 
-        seedResourceIfMissing("res-145", "621.389 SLD", "Weller WE1010NA Digital Soldering Station & ESD Kit", "Weller Soldering",
-                "70W digital soldering station with temperature lock, automatic standby, ESD safe iron handle, and brass wire tip cleaner.",
-                "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=600&q=80", ResourceType.LAB_KIT, 5, 4, "LAB-ROOM-206",
-                List.of("lab-kit", "soldering", "workbench"), ResourceStatus.AVAILABLE);
+        seedResourceIfMissing("res-145", "621.381 CKT", "Microelectronic Circuits (8th Edition)", "Adel S. Sedra & Kenneth C. Smith",
+                "Operational amplifiers, MOSFETs, BJTs, frequency response, feedback amplifiers, and integrated circuit design.",
+                "https://covers.openlibrary.org/b/isbn/9780190853464-L.jpg", ResourceType.BOOK, 6, 4, "SHELF-K6",
+                List.of("circuits", "electronics", "engineering"), ResourceStatus.AVAILABLE);
 
-        seedResourceIfMissing("res-146", "621.395 ANK", "Anker 737 Power Bank 140W Portable Lab Charger", "Anker Innovations",
-                "24,000mAh portable power bank with USB Power Delivery 3.1 140W output, smart digital display, and multi-device charging.",
-                "https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=600&q=80", ResourceType.HARDWARE, 6, 5, "LAB-ROOM-204",
-                List.of("hardware", "power-bank", "lab-accessories"), ResourceStatus.AVAILABLE);
+        seedResourceIfMissing("res-146", "621.382 SIG", "Signals and Systems (2nd Edition)", "Alan V. Oppenheim & Alan S. Willsky",
+                "Continuous-time and discrete-time signals, Fourier transforms, Laplace transforms, z-transforms, and linear time-invariant systems.",
+                "https://covers.openlibrary.org/b/isbn/9780138147570-L.jpg", ResourceType.BOOK, 7, 5, "SHELF-L1",
+                List.of("signals-systems", "fourier", "dsp"), ResourceStatus.AVAILABLE);
 
-        seedResourceIfMissing("res-147", "621.381 PROB", "Tektronix TPP0200 200MHz 10X Passive Probes (Set of 4)", "Tektronix Instrumentation",
-                "200MHz bandwidth passive voltage probes with 10X attenuation, 300V CAT II safety rating, and grounding alligator clips.",
-                "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=600&q=80", ResourceType.HARDWARE, 4, 3, "LAB-ROOM-205",
-                List.of("hardware", "probes", "oscilloscope"), ResourceStatus.AVAILABLE);
+        seedResourceIfMissing("res-147", "621.389 DSP", "Discrete-Time Signal Processing (3rd Edition)", "Alan V. Oppenheim & Ronald W. Schafer",
+                "Sampling theory, z-transform analysis, FIR/IIR filter design, Fast Fourier Transform (FFT) algorithms, and multirate DSP.",
+                "https://covers.openlibrary.org/b/isbn/9780131988422-L.jpg", ResourceType.BOOK, 5, 3, "SHELF-L2",
+                List.of("dsp", "signal-processing", "fft"), ResourceStatus.AVAILABLE);
 
-        seedResourceIfMissing("res-148", "621.399 SENS", "SunFounder 37-in-1 Sensor Modules Kit", "SunFounder Education",
-                "Comprehensive sensor kit including ultrasonic distance, DHT11 temp/humidity, GY-521 gyro/accel, IR obstacle, and relay modules.",
-                "https://images.unsplash.com/photo-1553406830-ef2513450d76?auto=format&fit=crop&w=600&q=80", ResourceType.LAB_KIT, 6, 5, "LAB-ROOM-204",
-                List.of("lab-kit", "sensors", "electronics"), ResourceStatus.AVAILABLE);
+        seedResourceIfMissing("res-148", "629.8 CTL", "Modern Control Engineering (5th Edition)", "Katsuhiko Ogata",
+                "State-space representation, root locus analysis, Bode plots, Nyquist stability criterion, and PID controller design.",
+                "https://covers.openlibrary.org/b/isbn/9780136156734-L.jpg", ResourceType.BOOK, 4, 3, "SHELF-L3",
+                List.of("control-systems", "robotics", "engineering"), ResourceStatus.AVAILABLE);
 
-        seedResourceIfMissing("res-149", "621.388 SMR", "Hakko FA-400 Benchtop Smoke Absorber Fume Extractor", "Hakko Corporation",
-                "Compact ESD-safe benchtop soldering fume extractor with activated carbon filter for removing soldering smoke flux toxins.",
-                "https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=600&q=80", ResourceType.LAB_KIT, 4, 4, "LAB-ROOM-206",
-                List.of("lab-kit", "safety", "soldering"), ResourceStatus.AVAILABLE);
+        seedResourceIfMissing("res-149", "511.5 GRAPH", "Introduction to Graph Theory (2nd Edition)", "Douglas B. West",
+                "Trees, matchings, planarity, colorings, Eulerian and Hamiltonian circuits, network flows, and random graphs.",
+                "https://covers.openlibrary.org/b/isbn/9780130144003-L.jpg", ResourceType.BOOK, 5, 4, "SHELF-L4",
+                List.of("graph-theory", "discrete-math", "algorithms"), ResourceStatus.AVAILABLE);
 
-        seedResourceIfMissing("res-150", "621.395 FLIR", "FLIR E4 Compact Thermal Imaging Camera with MSX", "FLIR Systems",
-                "80x60 thermal infrared camera resolution with MSX image enhancement for inspecting PCB thermal hot spots and component shorts.",
-                "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=600&q=80", ResourceType.HARDWARE, 2, 1, "LAB-ROOM-205",
-                List.of("hardware", "thermal-camera", "pcb-diagnostics"), ResourceStatus.AVAILABLE);
+        seedResourceIfMissing("res-150", "512.5 LA", "Linear Algebra and Its Applications (6th Edition)", "David C. Lay, Steven R. Lay",
+                "Matrix algebra, vector spaces, linear transformations, eigenvalues, singular value decomposition (SVD), and least squares.",
+                "https://covers.openlibrary.org/b/isbn/9780135851159-L.jpg", ResourceType.BOOK, 8, 6, "SHELF-L5",
+                List.of("linear-algebra", "matrices", "math"), ResourceStatus.AVAILABLE);
 
-        seedResourceIfMissing("res-151", "371.330 SEM1", "Capstone Seminar Room 401A (6-Person Capacity)", "Campus Facilities",
-                "Acoustic glass seminar room equipped with 55-inch 4K screen, HDMI input, whiteboards, and quiet study ventilation.",
-                "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=600&q=80", ResourceType.SEMINAR_ROOM, 1, 1, "BUILDING-3",
-                List.of("seminar-room", "group-study"), ResourceStatus.AVAILABLE);
+        seedResourceIfMissing("res-151", "005.1 DP", "Design Patterns: Elements of Reusable Object-Oriented Software", "Erich Gamma, Richard Helm (Gang of Four)",
+                "The classic Gang of Four reference: Creational, Structural, and Behavioral OOP design patterns.",
+                "https://covers.openlibrary.org/b/isbn/9780201633610-L.jpg", ResourceType.BOOK, 6, 4, "SHELF-M1",
+                List.of("design-patterns", "gof", "oop"), ResourceStatus.AVAILABLE);
 
-        seedResourceIfMissing("res-152", "371.330 SEM3", "Capstone Seminar Room 403C (10-Person Capacity)", "Campus Facilities",
-                "Large teamwork room with modular conference tables, dual whiteboards, 4K screen with wireless AirPlay/Miracast casting.",
-                "https://images.unsplash.com/photo-1517502884422-41eaead166d4?auto=format&fit=crop&w=600&q=80", ResourceType.SEMINAR_ROOM, 1, 1, "BUILDING-3",
-                List.of("seminar-room", "presentation"), ResourceStatus.AVAILABLE);
+        seedResourceIfMissing("res-152", "005.1 REF", "Refactoring: Improving the Design of Existing Code (2nd Ed)", "Martin Fowler",
+                "Catalog of refactorings, code smells, testing techniques, and object-oriented architectural redesign.",
+                "https://covers.openlibrary.org/b/isbn/9780134757599-L.jpg", ResourceType.BOOK, 5, 3, "SHELF-M2",
+                List.of("refactoring", "clean-code", "fowler"), ResourceStatus.AVAILABLE);
 
-        seedResourceIfMissing("res-153", "371.330 SEM4", "AI Research Lab Conference Suite 501 (16-Person Capacity)", "Engineering Faculty Facilities",
-                "High-tier conference room with dual laser projectors, surround audio, ceiling mic array, and video conferencing hub.",
-                "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=600&q=80", ResourceType.SEMINAR_ROOM, 1, 1, "BUILDING-5",
-                List.of("seminar-room", "conference", "faculty"), ResourceStatus.AVAILABLE);
+        seedResourceIfMissing("res-153", "005.1 DDD", "Domain-Driven Design: Tackling Complexity in Software", "Eric Evans",
+                "Bounded contexts, ubiquitous language, aggregates, entities, value objects, and domain event architectures.",
+                "https://covers.openlibrary.org/b/isbn/9780321125217-L.jpg", ResourceType.BOOK, 4, 2, "SHELF-M3",
+                List.of("ddd", "architecture", "domain-modeling"), ResourceStatus.AVAILABLE);
 
-        seedResourceIfMissing("res-154", "371.331 VR2", "Spatial Computing VR Sandbox Pod 202 (8-Person Capacity)", "Interactive Media Department",
-                "Padded floor VR testing bay equipped with ceiling lighthouse motion trackers, high-end GPU workstations, and spatial audio.",
-                "https://images.unsplash.com/photo-1593508512255-86ab42a8e620?auto=format&fit=crop&w=600&q=80", ResourceType.SEMINAR_ROOM, 1, 1, "BUILDING-2",
-                List.of("seminar-room", "vr-sandbox", "media"), ResourceStatus.AVAILABLE);
+        seedResourceIfMissing("res-154", "005.1 ARCH1", "Clean Architecture: A Craftsman's Guide to Software Structure", "Robert C. Martin (Uncle Bob)",
+                "Solid design principles, component boundaries, dependency inversion, entity rules, and decoupled framework architectures.",
+                "https://covers.openlibrary.org/b/isbn/9780134494166-L.jpg", ResourceType.BOOK, 6, 4, "SHELF-M4",
+                List.of("clean-architecture", "solid-principles", "software-design"), ResourceStatus.AVAILABLE);
 
         seedResourceIfMissing("res-155", "006.310 NLP", "Natural Language Processing with Transformers", "Lewis Tunstall, Leandro von Werra",
                 "Hugging Face Transformers library: BERT, GPT, T5, fine-tuning sequence classification, text generation, and RAG pipelines.",
@@ -354,15 +354,15 @@ public class DataInitializer implements CommandLineRunner {
                 "https://covers.openlibrary.org/b/isbn/9781492051725-L.jpg", ResourceType.BOOK, 5, 3, "SHELF-L2",
                 List.of("react", "frontend", "javascript"), ResourceStatus.AVAILABLE);
 
-        seedResourceIfMissing("res-159", "621.398 CAN", "PEAK PCAN-USB CAN Bus Adapter Kit for Automotive & Robotics", "PEAK-System Technik",
-                "High-speed CAN bus 2.0A/B to USB interface adapter with galvanic isolation, DB9 connector, and PCAN-View monitoring software.",
-                "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=600&q=80", ResourceType.HARDWARE, 3, 2, "LAB-ROOM-205",
-                List.of("hardware", "can-bus", "robotics", "automotive"), ResourceStatus.AVAILABLE);
+        seedResourceIfMissing("res-159", "005.1 SRE", "Site Reliability Engineering: How Google Runs Production Systems", "Betsy Beyer, Chris Jones",
+                "SLOs, SLIs, error budgets, monitoring, incident management, automation, postmortems, and distributed system reliability.",
+                "https://covers.openlibrary.org/b/isbn/9781491929124-L.jpg", ResourceType.BOOK, 5, 3, "SHELF-M5",
+                List.of("sre", "devops", "google"), ResourceStatus.AVAILABLE);
 
-        seedResourceIfMissing("res-160", "621.399 RTL", "RTL-SDR Blog V4 Software Defined Radio Receiver Kit", "RTL-SDR Blog",
-                "SMA software-defined radio receiver with 500kHz - 1.7GHz tuning range, TCXO 1PPM precision clock, and dipole antenna set.",
-                "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=600&q=80", ResourceType.LAB_KIT, 4, 3, "LAB-ROOM-204",
-                List.of("lab-kit", "sdr", "rf", "wireless"), ResourceStatus.AVAILABLE);
+        seedResourceIfMissing("res-160", "005.1 BPO", "Building Microservices (2nd Edition)", "Sam Newman",
+                "Microservice decomposition, API gateways, service mesh, saga transactions, distributed logging, and continuous deployment.",
+                "https://covers.openlibrary.org/b/isbn/9781492034025-L.jpg", ResourceType.BOOK, 6, 4, "SHELF-M6",
+                List.of("microservices", "architecture", "distributed-systems"), ResourceStatus.AVAILABLE);
 
         log.info("LIBRARIX MongoDB 60-items dataset initialization complete. Total items in DB: {}", resourceRepository.count());
     }
