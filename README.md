@@ -1,8 +1,8 @@
 <div align="center">
-  <img src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=300&q=80" alt="LIBRARIX Emblem" width="130" style="border-radius: 50%; border: 3px solid #0B0B0B; box-shadow: 6px 6px 0px #0B0B0B;" />
+  <img src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=300&q=80" alt="LIBRARIX Emblem" width="130" style="border-radius: 24px; border: 3px solid #0B0B0B; box-shadow: 6px 6px 0px #0B0B0B;" />
   <h1>LIBRARIX (लाइब्रेरीक्स)</h1>
-  <p><strong><em>"Smart Resource Allocation & Weighted Fair Reservation Queue Engine"</em></strong></p>
-  <p><em>Algorithmic Campus Resource Allocation, Priority Waitlist Management & RAG Semantic Search Platform</em></p>
+  <p><strong><em>"Next-Generation Campus Library & Smart Resource Management Platform"</em></strong></p>
+  <p><em>Full-Stack Circulation System for Academic Textbooks, Lab Hardware Kits, Oscilloscopes, Media Equipment, and Study Rooms</em></p>
 </div>
 
 <div align="center">
@@ -12,6 +12,7 @@
 [![MongoDB 7.0](https://img.shields.io/badge/MongoDB-7.0-47A248?style=for-the-badge&logo=mongodb&logoColor=white)](https://mongodb.com)
 [![Next.js 14](https://img.shields.io/badge/Next.js-14.1-black?style=for-the-badge&logo=next.js&logoColor=white)](https://nextjs.org)
 [![React 18](https://img.shields.io/badge/React-18.2-61DAFB?style=for-the-badge&logo=react&logoColor=black)](https://react.dev)
+[![Three.js](https://img.shields.io/badge/Three.js-R3F-black?style=for-the-badge&logo=three.js&logoColor=white)](https://threejs.org)
 [![STOMP WebSockets](https://img.shields.io/badge/WebSocket-STOMP-FF6A1A?style=for-the-badge&logo=websocket&logoColor=white)](https://spring.io/guides/gs/messaging-stomp-websocket/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind-Neobrutalism-38BDF8?style=for-the-badge&logo=tailwindcss&logoColor=white)](https://tailwindcss.com)
 [![Docker](https://img.shields.io/badge/Docker-Enabled-2496ED?style=for-the-badge&logo=docker&logoColor=white)](https://docker.com)
@@ -20,9 +21,9 @@
 
 ---
 
-**LIBRARIX (लाइब्रेरीक्स)** is an algorithmic campus resource circulation and allocation platform engineered to eliminate the core flaws of legacy resource allocation tools: **waitlist starvation**, **resource hogging by inactive users**, and **primitive keyword-only search**.
+**LIBRARIX (लाइब्रेरीक्स)** is a modern, full-stack campus library management system built for universities and educational institutions.
 
-Unlike traditional platforms that rely on naive First-In-First-Out (FIFO) queues, LIBRARIX introduces a production-grade algorithmic engine powered by **Weighted Fair Reservation Queuing (WFQ)**, **RAG Semantic Vector Search with HuggingFace L2 Normalization**, and **Real-Time STOMP WebSockets**.
+Traditional library software typically only manages simple book checkouts. **LIBRARIX** goes further by providing a complete platform for academic assets — textbooks, lab hardware kits, oscilloscopes, media equipment, and seminar study rooms. It introduces **Weighted Fair Reservation Queues** (allocating urgent resources to senior capstone teams & research faculty fairly), **AI Semantic Vector Search** (finding resources by topic or concept rather than exact title keywords), an **Interactive 3D Shelf Visualizer**, **Automated Dynamic Fine Calculation**, and **Real-Time STOMP WebSocket Notifications** when reserved items become available.
 
 ---
 
@@ -33,12 +34,12 @@ Unlike traditional platforms that rely on naive First-In-First-Out (FIFO) queues
 - [Architecture Overview](#-architecture-overview)
   - [High-Level System Architecture](#high-level-system-architecture)
   - [Weighted Fair Queue Pipeline](#weighted-fair-queue-pipeline)
-  - [3D Greedy Warehouse Slotting Flow](#3d-greedy-warehouse-slotting-flow)
+  - [3D Spatial Shelf Slotting Flow](#3d-spatial-shelf-slotting-flow)
   - [RAG Semantic Vector Search Pipeline](#rag-semantic-vector-search-pipeline)
   - [STOMP Real-Time Alert Engine](#stomp-real-time-alert-engine)
 - [Core Algorithms & Engineering Core](#-core-algorithms--engineering-core)
   - [1. Weighted Fair Reservation Queue Engine](#1-weighted-fair-reservation-queue-engine)
-  - [2. 3D Greedy Warehouse-Slotting Optimizer](#2-3d-greedy-warehouse-slotting-optimizer)
+  - [2. 3D Spatial Shelf Slotting Optimizer](#2-3d-spatial-shelf-slotting-optimizer)
   - [3. RAG Vector Search & HuggingFace L2 Tokenizer](#3-rag-vector-search--huggingface-l2-tokenizer)
   - [4. Rule-Based Fine & Exemption Waiver Engine](#4-rule-based-fine--exemption-waiver-engine)
 - [Quick Start](#-quick-start)
@@ -56,13 +57,13 @@ Unlike traditional platforms that rely on naive First-In-First-Out (FIFO) queues
 
 ## 💡 Problem Statement
 
-Legacy campus circulation platforms treat all asset requests with naive First-In-First-Out (FIFO) queues and static text tables. When a critical capstone hardware kit or rare algorithms textbook is checked out:
-1. **Queue Starvation**: Senior students facing imminent project deadlines get stuck behind casual readers in simple FIFO queues.
-2. **Spatial Disorganization**: Warehouse staff lose hours searching for high-demand items scattered across low-accessibility shelves.
-3. **Keyword Search Failures**: Traditional keyword search fails when students search by conceptual intent (e.g. *"distributed consensus and fault tolerance"*) rather than exact book titles.
-4. **Stale Notifications**: Students miss available window opportunities because notification emails arrive hours late.
+Traditional university library management systems treat all resource requests with basic First-In-First-Out (FIFO) queues and static text tables. When high-demand hardware kits or essential textbooks are checked out:
+1. **Queue Starvation**: Senior capstone students facing imminent project deadlines get stuck behind casual readers in simple FIFO queues.
+2. **Keyword Search Failures**: Traditional keyword search fails when students search by conceptual intent (e.g. *"distributed consensus and fault tolerance"*) rather than exact book titles.
+3. **Delayed Notifications**: Students miss available pickup windows because notification emails arrive hours late.
+4. **Rigid Penalties**: Fixed flat penalties penalize students without accounting for grace periods or project deadline waivers.
 
-**LIBRARIX** solves this by uniting real-time algorithmic priority scheduling, spatial 3D slotting optimization, vector-space semantic search, and instantaneous WebSocket push alerts into a Neobrutalist web platform.
+**LIBRARIX** solves this by uniting real-time algorithmic priority waitlists, semantic vector search, interactive 3D shelf visualization, automated dynamic fines, and instantaneous WebSocket push alerts into a Neobrutalist web platform.
 
 ---
 
@@ -71,13 +72,13 @@ Legacy campus circulation platforms treat all asset requests with naive First-In
 | Feature | LIBRARIX Platform | Legacy Library Systems |
 |---|---|---|
 | **Waitlist Queue Engine** | **Weighted Fair Reservation Queueing Engine** with continuous wait-time aging decay, urgency score boosts (+10, +25, +50), and user tier multipliers (Regular $1.0\times$, Capstone $1.5\times$, Faculty $2.0\times$) | Naive First-In-First-Out (FIFO) queue with zero priority awareness |
-| **Spatial Inventory Layout** | **3D Greedy Warehouse-Slotting Optimizer** placing top 30% high-demand items at Eye-Level height ($y = 1.5\text{m}$) with affinity graph clustering | Static 2D text lists with random shelf placement |
+| **Spatial Inventory Layout** | **3D Spatial Shelf Slotting Optimizer** placing top 30% high-demand items at Eye-Level height ($y = 1.5\text{m}$) with category clustering | Static 2D text lists with random shelf placement |
 | **Search Intelligence** | **RAG Vector Search Engine** using HuggingFace L2 Euclidean distance tokenizer for semantic intent matching | Strict literal SQL substring matching (`LIKE %term%`) |
 | **Real-Time Push Alerts** | **STOMP WebSocket Engine** pushing instant toast notifications on check-in to specific user topics (`/topic/user/{userId}`) | Delayed batch email notifications |
 | **Overdue Fine Governance** | **Rule-Based Fine & Waiver Engine** with daily category rates ($0.50/day vs $2.00/day), 24h grace period, $50 caps, and Capstone exemption waivers | Fixed flat penalties with zero waiver workflows |
 | **Interactive 3D Layer** | **Three.js & React Three Fiber (R3F)** interactive 3D shelf hall corridor with non-overlapping raycasting | Plain static HTML table grids |
 | **Unauthenticated Browsing** | **Public Guest Access Mode** with inline checkout warnings and direct registration flows | Strict sign-in wall blocking public inventory visibility |
-| **Dataset Scale** | **60+ Pre-seeded Technical Dataset Items** auto-initialized in MongoDB on server startup | Empty placeholder database schemas |
+| **Dataset Scale** | **60 Pre-seeded Technical Dataset Items** auto-initialized in MongoDB on server startup | Empty placeholder database schemas |
 
 ---
 
@@ -104,7 +105,7 @@ graph TD
 
     subgraph Core ["Algorithmic Engine & Business Logic Layer"]
         WFQ["Weighted Fair Queue Engine (Aging Decay + Tier Multipliers)"]
-        SLOT["3D Greedy Warehouse Slotting Optimizer"]
+        SLOT["3D Spatial Shelf Slotting Optimizer"]
         RAG["RAG Vector Search (HuggingFace L2 Tokenizer)"]
         WAIVER["Rule-Based Fine & Waiver Engine"]
         STOMP_BROKER["SimpleBroker WebSocket Message Handler"]
@@ -163,7 +164,7 @@ flowchart TD
 
 ---
 
-### 3D Greedy Warehouse Slotting Flow
+### 3D Spatial Shelf Slotting Flow
 
 ```mermaid
 flowchart LR
@@ -254,7 +255,7 @@ sequenceDiagram
 
 ---
 
-### 2. 3D Greedy Warehouse-Slotting Optimizer
+### 2. 3D Spatial Shelf Slotting Optimizer
 - **Class**: [`ShelfSlottingOptimizer.java`](file:///e:/LIBRARIX/backend/src/main/java/com/librarix/shelf/ShelfSlottingOptimizer.java)
 - **Formula**:
   $$\text{PopularityScore} = (\text{TotalLoans} \times 2.0) + (\text{AvailableQuantity} \times 0.5)$$
@@ -407,6 +408,6 @@ LIBRARIX/
   <h1><strong>Ankan Basu</strong></h1>
   <p><strong>B.Tech Computer Science & Engineering (CSE) Student at Lovely Professional University (LPU)</strong></p>
   <br />
-  <p><em>LIBRARIX (लाइब्रेरीक्स) — "Smart Resource Allocation & Weighted Fair Reservation Queue Engine"</em></p>
+  <p><em>LIBRARIX (लाइब्रेरीक्स) — "Intelligent Circulation, 3D Spatial Slotting & Weighted Fair Reservation Queue Engine"</em></p>
   <br />
 </div>

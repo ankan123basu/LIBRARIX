@@ -115,7 +115,7 @@ export default function ShelfHallPage() {
             </Sticker>
           </div>
           <p className="font-mono text-xs text-ink/80">
-            Greedy warehouse slotting (Eye-level y=1.5m) and co-borrow affinity clustering
+            Interactive 3D visual shelf layout organized by popularity and shelf placement
           </p>
         </div>
 

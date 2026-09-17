@@ -34,7 +34,7 @@ export default function Home() {
           </div>
           <div className="absolute -top-4 -right-3 hidden sm:block">
             <Sticker color="blush" rotate="4deg">
-              🧠 RAG Vector Search & WFQ Engine
+              📚 3D Interactive Asset Layer
             </Sticker>
           </div>
 
@@ -43,18 +43,18 @@ export default function Home() {
             <div className="lg:col-span-7 space-y-6">
               <div className="inline-flex items-center gap-2 border-3 border-ink bg-sky px-3 py-1 font-mono text-xs font-bold uppercase shadow-brutal-sm">
                 <Sparkles className="w-4 h-4 text-ink" />
-                <span>Weighted Fair Reservation Queue Engine</span>
+                <span>Next-Gen Campus Library Platform</span>
               </div>
 
               <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-black text-ink leading-[0.95] tracking-tight">
-                SMART RESOURCE CIRCULATION &{' '}
+                SMART CAMPUS RESOURCE MANAGEMENT &{' '}
                 <span className="border-3 border-ink bg-highlight shadow-brutal px-3 py-1 inline-block my-2">
-                  ZERO-STARVATION QUEUE ENGINE
+                  PRIORITY WAITLIST QUEUE
                 </span>
               </h1>
 
               <p className="font-body text-base sm:text-lg text-ink leading-relaxed">
-                LIBRARIX eliminates waitlist hogging and queue starvation across university textbooks, lab hardware, and seminar assets using <strong>Weighted Fair Queuing (WFQ)</strong>, <strong>RAG Semantic Vector Search</strong>, and <strong>Real-Time STOMP WebSockets</strong>.
+                LIBRARIX is a modern campus library system for academic textbooks, lab hardware kits, oscilloscopes, and seminar study rooms—powered by fair reservation queues, AI semantic search, and real-time alerts.
               </p>
 
               <div className="flex flex-wrap items-center gap-4 pt-2">
