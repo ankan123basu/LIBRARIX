@@ -4,6 +4,7 @@ import './globals.css';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import LiveNotificationToast from '@/components/LiveNotificationToast';
+import AiLibrarianModal from '@/components/AiLibrarianModal';
 
 const archivoBlack = Archivo_Black({
   weight: '400',
@@ -49,6 +50,7 @@ export default function RootLayout({
         <div className="relative z-10 flex flex-col min-h-screen">
           <Navbar />
           <LiveNotificationToast />
+          <AiLibrarianModal />
           <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
             {children}
           </main>
