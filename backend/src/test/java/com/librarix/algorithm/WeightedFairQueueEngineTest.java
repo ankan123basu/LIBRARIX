@@ -15,11 +15,11 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class WeightedFairQueueEngineTest {
 
-    private WeightedFairQueueEngine queueEngine;
+    private PriorityQueueEngine queueEngine;
 
     @BeforeEach
     void setUp() {
-        queueEngine = new WeightedFairQueueEngine();
+        queueEngine = new PriorityQueueEngine();
     }
 
     @Test

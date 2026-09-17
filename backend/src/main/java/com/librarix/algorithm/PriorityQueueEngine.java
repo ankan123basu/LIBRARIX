@@ -43,4 +43,11 @@ public class PriorityQueueEngine {
 
         return waitTimeScore + urgencyBoost + userTierBoost;
     }
+
+    public java.util.List<ReservationQueueEntry> sortWaitlist(java.util.List<ReservationQueueEntry> entries) {
+        if (entries == null || entries.isEmpty()) return java.util.List.of();
+        return entries.stream()
+                .sorted((e1, e2) -> Double.compare(e2.getCalculatedPriorityScore(), e1.getCalculatedPriorityScore()))
+                .toList();
+    }
 }
