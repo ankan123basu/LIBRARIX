@@ -246,13 +246,13 @@ graph TB
 | `GET` | `/api/resources` | Fetch all catalog books | LRU-K Cache ($K=2$) |
 | `GET` | `/api/resources/autocomplete` | Fast prefix title search | Trie Autocomplete ($O(p+k)$) |
 | `GET` | `/api/resources/route` | Compute multi-book pickup path | Dijkstra Route Optimizer |
-| `GET` | `/api/resources/analytics/due-date-range` | Range query loan return volumes | Segment Tree ($O(\log n)$) |
-| `POST` | `/api/loans/borrow` | Borrow a resource | Bloom Filter Pre-check |
-| `POST` | `/api/loans/return/{id}` | Return a borrowed resource | Fine Rule Engine + WFQ Pop |
-| `POST` | `/api/queue/join` | Join waitlist for resource | Weighted Fair Queue Scoring |
+| `GET` | `/api/resources/availability-forecast` | Range query loan return volumes | Segment Tree ($O(\log n)$) |
+| `POST` | `/api/loans/borrow/{resourceId}` | Borrow a resource | Bloom Filter Pre-check |
+| `POST` | `/api/loans/return/{loanId}` | Return a borrowed resource | Fine Rule Engine + WFQ Pop |
+| `POST` | `/api/queue/join/{resourceId}` | Join waitlist for resource | Weighted Fair Queue Scoring |
 | `GET` | `/api/queue/{resourceId}` | Get prioritized queue entries | Priority Queue Heap Sort |
 | `POST` | `/api/ai/ask` | Ask LIBRA-AI assistant | RAG Pipeline + L2 Vector Search |
-| `GET` | `/api/ai/recommendations` | Get user book recommendations | Co-Borrow Graph LPA |
+| `GET` | `/api/ai/recommendations/mine` | Get user book recommendations | Co-Borrow Graph LPA |
 
 ---
 
