@@ -347,11 +347,11 @@ export default function CatalogPage() {
             <span>DRAWER</span>
           </BrutalButton>
 
-          {/* 3D Hall Switch Toggle */}
-          <Link href="/shelf-hall">
+          {/* Dashboard Link */}
+          <Link href="/dashboard">
             <BrutalButton variant="secondary" size="md">
               <Layers className="w-4 h-4" />
-              <span>3D HALL</span>
+              <span>DASHBOARD</span>
             </BrutalButton>
           </Link>
 

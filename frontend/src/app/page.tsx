@@ -64,10 +64,10 @@ export default function Home() {
                     <ArrowRight className="w-5 h-5" />
                   </BrutalButton>
                 </Link>
-                <Link href="/shelf-hall">
+                <Link href="/dashboard">
                   <BrutalButton variant="secondary" size="lg">
                     <Layers className="w-5 h-5" />
-                    <span>ENTER 3D SHELF HALL</span>
+                    <span>STUDENT DASHBOARD</span>
                   </BrutalButton>
                 </Link>
               </div>

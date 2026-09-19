@@ -53,16 +53,16 @@ export default function Navbar() {
           </Link>
 
           <Link
-            href="/shelf-hall"
+            href="/dashboard"
             className={`px-3 py-1.5 border-3 border-ink text-xs sm:text-sm font-mono font-bold transition-all ${
-              pathname === '/shelf-hall' || pathname === '/shelf'
+              pathname === '/dashboard'
                 ? 'bg-lilac shadow-brutal-sm translate-x-[-2px] translate-y-[-2px]'
                 : 'bg-paper-2 hover:bg-paper'
             }`}
           >
             <span className="flex items-center space-x-1.5">
               <Layers className="w-4 h-4" />
-              <span>3D HALL</span>
+              <span>DASHBOARD</span>
             </span>
           </Link>
 

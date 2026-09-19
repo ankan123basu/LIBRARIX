@@ -16,4 +16,5 @@ public interface LoanRepository extends MongoRepository<Loan, String> {
     List<Loan> findByResourceIdAndStatus(String resourceId, LoanStatus status);
     List<Loan> findByStatusAndDueDateBefore(LoanStatus status, Instant date);
     Optional<Loan> findByUserIdAndResourceIdAndStatus(String userId, String resourceId, LoanStatus status);
+    List<Loan> findByStatus(LoanStatus status);
 }

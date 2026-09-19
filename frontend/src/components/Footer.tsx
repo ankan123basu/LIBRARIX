@@ -88,8 +88,8 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/shelf-hall" className="hover:text-ink hover:underline">
-                  3D Interactive Shelf Hall
+                <Link href="/dashboard" className="hover:text-ink hover:underline">
+                  Student Dashboard
                 </Link>
               </li>
             </ul>

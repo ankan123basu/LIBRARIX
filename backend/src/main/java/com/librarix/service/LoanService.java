@@ -4,6 +4,7 @@ import com.librarix.dto.LoanDTO;
 import com.librarix.exception.InsufficientStockException;
 import com.librarix.exception.QueueConflictException;
 import com.librarix.exception.ResourceNotFoundException;
+import com.librarix.filter.BorrowBloomFilter;
 import com.librarix.model.Fine;
 import com.librarix.model.Loan;
 import com.librarix.model.Resource;
@@ -37,6 +38,7 @@ public class LoanService {
     private final FineCalculationService fineCalculationService;
     private final QueueService queueService;
     private final NotificationService notificationService;
+    private final BorrowBloomFilter borrowBloomFilter;
 
     public LoanDTO borrowResource(String resourceId, String userId, UrgencyLevel urgencyLevel) {
         Resource resource = resourceRepository.findById(resourceId)
@@ -45,11 +47,17 @@ public class LoanService {
         User user = userRepository.findById(userId)
                 .orElseThrow(() -> new ResourceNotFoundException("User not found: " + userId));
 
-        // Check if user already has an active loan for this resource
-        Optional<Loan> existingActiveLoan = loanRepository
-                .findByUserIdAndResourceIdAndStatus(userId, resourceId, LoanStatus.ACTIVE);
-        if (existingActiveLoan.isPresent()) {
-            throw new QueueConflictException("You currently have an active loan for this item.");
+        // Bloom Filter pre-check: skip DB query if filter says definitely-not-borrowed
+        if (borrowBloomFilter.mightHaveBorrowed(userId, resourceId)) {
+            // Filter says MAYBE — must verify with actual DB query
+            Optional<Loan> existingActiveLoan = loanRepository
+                    .findByUserIdAndResourceIdAndStatus(userId, resourceId, LoanStatus.ACTIVE);
+            if (existingActiveLoan.isPresent()) {
+                throw new QueueConflictException("You currently have an active loan for this item.");
+            }
+            log.debug("Bloom filter false positive: user {} / resource {} not actually borrowed", userId, resourceId);
+        } else {
+            log.debug("Bloom filter: user {} definitely has NOT borrowed resource {} — DB query skipped", userId, resourceId);
         }
 
         // If resource is unavailable, auto-enqueue user into waitlist
@@ -76,6 +84,9 @@ public class LoanService {
                 .build();
 
         Loan savedLoan = loanRepository.save(loan);
+
+        // Add to Bloom filter for future duplicate detection
+        borrowBloomFilter.addBorrow(userId, resourceId);
 
         notificationService.sendNotification(
                 userId,
